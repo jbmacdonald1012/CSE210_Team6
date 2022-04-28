@@ -4,10 +4,18 @@
 def main():
     
     welcome()
+
     game = buildGameboard()
+    player = nextTurn('')
+    
+    while not (winner(game) or stalemate(game)):
+        showGameboard(game)
+        claimSpot(player, game)
+        player = nextTurn(player)
 
     showGameboard(game)
-
+    print()
+    print('Your session is over. Good game well played. Have a good one!')
 
 def welcome():
     print('Let\'s play Tic Tac Toe!')
@@ -48,6 +56,20 @@ def stalemate(game):
         if game[area] != 'X' and game[area] != 'O':
             return False
     return True
+
+def claimSpot(player, game):
+    spot = int(input(f'Player {player}\'s turn. Please select where you want to place your piece (Areas 1 - 9): '))
+
+    if player == 1:
+        game[area - 1] = 'X'
+    elif player == 2:
+        game[area -1] = 'O'
+
+def nextTurn(turn):
+    if turn == '' or tuen == 2:
+        return 1
+    elif turn == 1:
+        return 2
 
 if __name__ == "__main__":
     main()
