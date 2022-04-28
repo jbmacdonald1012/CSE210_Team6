@@ -31,7 +31,23 @@ def showGameboard(game):
     print()
     print()
 
+def winner(game):
+    return(
+        game[0] == game[1] == game[2] or
+        game[3] == game[4] == game[5] or
+        game[6] == game[7] == game[8] or
+        game[0] == game[3] == game[6] or
+        game[1] == game[4] == game[7] or
+        game[2] == game[5] == game[8] or
+        game[0] == game[4] == game[8] or
+        game[2] == game[4] == game[6]
+)
 
+def stalemate(game):
+    for area in range(9):
+        if game[area] != 'X' and game[area] != 'O':
+            return False
+    return True
 
 if __name__ == "__main__":
     main()
