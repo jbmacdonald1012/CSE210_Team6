@@ -3,7 +3,17 @@
 
 def main():
     
+    welcome()
+    game = buildGameboard()
+
+
+def welcome():
     print('Let\'s play Tic Tac Toe!')
+    print()
+
+def buildGameboard():
+
+
 
 if __name__ == "__main__":
     main()
