@@ -60,9 +60,9 @@ def claimSpot(player, game):
     spot = int(input(f'Player {player}\'s turn. Please select where you want to place your piece (Areas 1 - 9): '))
 
     if player == 1:
-        game[area - 1] = 'X'
+        game[spot - 1] = 'X'
     elif player == 2:
-        game[area -1] = 'O'
+        game[spot -1] = 'O'
 
 def nextTurn(turn):
     if turn == '' or turn == 2:
