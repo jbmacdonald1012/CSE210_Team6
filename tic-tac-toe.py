@@ -14,8 +14,7 @@ def main():
         player = nextTurn(player)
 
     showGameboard(game)
-    print()
-    print('Your session is over. Good game well played. Have a good one!')
+    closingMessage()
 
 def welcome():
     print('Let\'s play Tic Tac Toe!')
@@ -70,6 +69,10 @@ def nextTurn(turn):
         return 1
     elif turn == 1:
         return 2
+
+def closingMessage():
+    print()
+    print('Your session is over. Good game well played. Have a good one!')
 
 if __name__ == "__main__":
     main()
