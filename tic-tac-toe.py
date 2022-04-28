@@ -66,7 +66,7 @@ def claimSpot(player, game):
         game[area -1] = 'O'
 
 def nextTurn(turn):
-    if turn == '' or tuen == 2:
+    if turn == '' or turn == 2:
         return 1
     elif turn == 1:
         return 2
