@@ -1,6 +1,6 @@
 Create 2 classes: 
 
-Class 1 - Cards - Shawn
+Class 1 - Cards - Shawn Jensen
 
     Constructor:
         - cardValue = ''
