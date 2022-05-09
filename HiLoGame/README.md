@@ -5,7 +5,7 @@ Class 1 - Cards - Shawn Jensen
     Constructor:
         - cardValue = ''
         - roundScore = '' 
-        - totalScore = ''
+        - totalScore = 300
 
     Methods:
         - drawCard(cardValue)
@@ -19,7 +19,10 @@ Class 1 - Cards - Shawn Jensen
                     print Game Over
                 else
                     -display score
-        
+
+        -restartValues (roundScore, totalScore)
+            -totalScore: 300
+            -roundScore: 0
 Class 2 - Player - Victor
     
     Constructor:
@@ -49,15 +52,16 @@ def main():
         card = Cards()
         
     call class functions
-
-        player.playerGuess()
-        card.drawCard()
-        card.updateScore()
-
-        if player.updateScore() < 0
-            - player.startOver()
-        else
-            - player.keepPlaying()
+        while  player.continueGameChoice
+            player.playerGuess()
+            card.drawCard()
+            card.updateScore()
+            if card.updateScore() < 0
+                - player.startOver()
+                if player.continueGameChoice
+                    card.restartvalues
+            else
+                - player.keepPlaying()
 
 
 
