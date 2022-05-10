@@ -79,3 +79,18 @@ class player:
     def startOver (self) :
         continuegame = input("do you want to start over [y/n]: ")
         self.continueGameChoice = (continuegame == "y")
+
+
+
+def main():
+    card = Card()
+    player = Player()
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
