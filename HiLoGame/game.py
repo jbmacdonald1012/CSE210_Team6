@@ -2,7 +2,6 @@ import random
 
 class cards:
     """ A set of cards that be drawn to provide a random integer between 1 and 13
-
     Attributes:
         value (int): The number on the card that is drawn."""
 
