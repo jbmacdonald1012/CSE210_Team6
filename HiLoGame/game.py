@@ -11,8 +11,9 @@ class Cards:
             self (cards): An instance of cards.
         """
         
-        self.value = 0
-        self.roundscore = 0
+        self.cardvalue = 0
+        self.previouscard = 0
+        self.total = 300
         self.playerInput = ""
       
     """    
@@ -48,18 +49,25 @@ class Cards:
         self.cardvalue = random.randint(1, 13)
         print(f'The card is {self.cardvalue}')
 
+    def setPreviousCard(self):
+        self.previouscard = self.cardvalue
+
     def playerGuess (self) :
         self.playerInput = (input("higher or lower? "))
 
     def updatescore(self):
-        if self.cardvalue > self.previouscard and self.playerInput.lower == "h": 
-            self.total += 100
-        elif self.cardvaule < self.previouscard and self.playerInput.lower == "l":
-            self.total += 100
-        elif self.cardvaule < self.previouscard and self.playerInput.lower == "h":
-            self.total -= 75
-        else:
-            self.total -= 75
+        if self.cardvalue > self.previouscard:
+            if self.playerInput.lower() == "h": 
+                self.total += 100
+            else:
+                self.total -= 75
+        elif self.cardvalue < self.previouscard:
+            if self.playerInput.lower() == 'l':
+                self.total += 100
+            else:
+                self.total -= 75
+
+        print(f"Your score is: {self.total}")
 
         
 class Player:
@@ -82,17 +90,45 @@ class Player:
         self.continueGameChoice = True
     
     def keepPlaying (self) :
-        continuegame = input("continue playing? [y/n]: ")
-        self.continueGameChoice = (continuegame == "y")
+        self.playerInput = input("continue playing? [y/n]: ")
+        return self.playerInput
 
     def startOver (self) :
-        continuegame = input("do you want to start over [y/n]: ")
-        self.continueGameChoice = (continuegame == "y")
+        self.playerInput = input("do you want to start over [y/n]: ")
+        return self.playerInput
 
 def main():
+    
+    card = Cards()
     player = Player()
 
+    gameplay(card, player)
 
+def gameplay(card, player):
+    card.drawcard()
+    card.setPreviousCard()
+    card.playerGuess()
+    card.drawcard()
+    card.updatescore()
 
-if __main__ == "__main__":
+    if card.total < 0: 
+        print('Game Over. Your score is less than 0.')
+        print()
+        restart = player.startOver()
+        print()
+        
+    if restart.lower() == 'y':
+        gameplay(card, player)
+    elif restart.lower() != 'y':
+        return
+
+    choice = player.keepPlaying()
+    print()
+
+    if choice.lower() == 'y': 
+        gameplay(card, player)
+    else: 
+        return
+
+if __name__ == "__main__":
     main()
