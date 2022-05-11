@@ -53,7 +53,7 @@ class Cards:
         self.previouscard = self.cardvalue
 
     def playerGuess (self) :
-        self.playerInput = (input("higher or lower? "))
+        self.playerInput = (input("higher or lower [h/l]? "))
 
     def updatescore(self):
         if self.cardvalue > self.previouscard:
