@@ -13,13 +13,14 @@ class cards:
         
         self.value = 0
         self.roundscore = 0
-        self.playerguess = ""
+        self.playerInput = ""
       
     """    
     Constructor:
-        - cardvalue = ''
-        - roundScore = '' 
-        - totalScore = 300
+        -cardvalue = ''
+        -roundScore = '' 
+        -totalScore = 300
+        -previous card = 0
 
     Methods:
         - drawCard(cardvalue)
@@ -45,13 +46,21 @@ class cards:
             self (card): An instance of card.
         """
         self.cardvalue = random.randint(1, 13)
-        print(f'The card is {self.cardvaule}')
+        print(f'The card is {self.cardvalue}')
 
     def playerGuess (self) :
-        self.playerInput = int(input("higher or lower? "))
+        self.playerInput = (input("higher or lower? "))
 
     def updatescore(self):
-        self
+        if self.cardvalue > self.previouscard and self.playerInput.lower == "h": 
+            self.total += 100
+        elif self.cardvaule < self.previouscard and self.playerInput.lower == "l":
+            self.total += 100
+        elif self.cardvaule < self.previouscard and self.playerInput.lower == "h":
+            self.total -= 75
+        else:
+            self.total -= 75
+
         
 class player:
 
