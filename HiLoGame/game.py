@@ -117,18 +117,18 @@ def gameplay(card, player):
         restart = player.startOver()
         print()
         
-    if restart.lower() == 'y':
-        gameplay(card, player)
-    elif restart.lower() != 'y':
-        return
-
+        if restart.lower() == 'y':
+            gameplay(card, player)
+        elif restart.lower() != 'y':
+            exit()
+            
     choice = player.keepPlaying()
     print()
 
     if choice.lower() == 'y': 
         gameplay(card, player)
     else: 
-        return
+        exit()
 
 if __name__ == "__main__":
     main()
