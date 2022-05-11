@@ -1,6 +1,6 @@
 import random
 
-class cards:
+class Cards:
     """ A set of cards that be drawn to provide a random integer between 1 and 13
     Attributes:
         value (int): The number on the card that is drawn."""
@@ -62,7 +62,7 @@ class cards:
             self.total -= 75
 
         
-class player:
+class Player:
 
     """A person who play the game. 
     
