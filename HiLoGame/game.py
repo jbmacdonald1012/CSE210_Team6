@@ -13,6 +13,7 @@ class cards:
         
         self.value = 0
         self.roundscore = 0
+        self.playerguess = ""
       
     """    
     Constructor:
@@ -46,10 +47,12 @@ class cards:
         self.cardvalue = random.randint(1, 13)
         print(f'The card is {self.cardvaule}')
 
+    def playerGuess (self) :
+        self.playerInput = int(input("higher or lower? "))
+
     def updatescore(self):
+        self
         
-
-
 class player:
 
     """A person who play the game. 
@@ -73,24 +76,6 @@ class player:
         continuegame = input("continue playing? [y/n]: ")
         self.continueGameChoice = (continuegame == "y")
 
-    def playerGuess (self) :
-        self.playerInput = int(input("higher or lower? "))
-
     def startOver (self) :
         continuegame = input("do you want to start over [y/n]: ")
         self.continueGameChoice = (continuegame == "y")
-
-
-
-def main():
-    card = Card()
-    player = Player()
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    main()
