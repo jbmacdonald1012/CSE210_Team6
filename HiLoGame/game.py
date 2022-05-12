@@ -31,7 +31,7 @@ class Cards:
         - updateScore(roundScore, totalScore)
             - calculate 
             - evaluateScore
-                if totalScore < 0
+                if totalScore <= 0
                     print Game Over
                 else
                     -display score
@@ -111,7 +111,7 @@ def gameplay(card, player):
     card.drawcard()
     card.updatescore()
 
-    if card.total < 0: 
+    if card.total <= 0: 
         print('Game Over. Your score is less than 0.')
         print()
         restart = player.startOver()
