@@ -1,71 +1,28 @@
-Create 2 classes: 
+# Hilo
+---
+Hilo is a game in which the player guesses if the next card drawn by the dealer 
+will be higher or lower than the previous one. Points are won or lost based on 
+whether or not the player guessed correctly.
+If you guess the next card (higher or lower), you get 100 points. Otherwise, you 
+lose 75 points. The game is over when you have less than 0 points. You can play 
+again how many times you want.
 
-Class 1 - Cards - Shawn Jensen
+## Project Structure
+---
+The project files and folders are organized as follows:
+```
+root                    (project root folder)
++-- game              (classes and functions)
++-- README.md           (general info)
+```
 
-    Constructor:
-        - cardValue = ''
-        - roundScore = '' 
-        - totalScore = 300
+## Required Technologies
+---
+* Python 3.8.0
 
-    Methods:
-        - drawCard(cardValue)
-            -Random integer from 1 - 13
-            -display card
-        
-        - updateScore(roundScore, totalScore)
-            - calculate 
-            - evaluateScore
-                if totalScore < 0
-                    print Game Over
-                else
-                    -display score
-
-        -restartValues (roundScore, totalScore)
-            -totalScore: 300
-            -roundScore: 0
-Class 2 - Player - Victor
-    
-    Constructor:
-        - playerInput = ""
-        - continueGameChoice = ""
-
-    Methods:
-        - keepPlaying(continueGameChoice)
-            - print to user 'Play Again'
-            evaluate user input
-        
-        -playerGuess(playerInput)
-            - guess = Player()
-            guess.playerInput = int(input('Higher or Lower? '))
-
-        -startOver(playerInput)
-            -start the game again
-
-Game Functionality - Jason
-
-def main():
-    
-    code here to play game 
-
-    set class instances
-        player = Player()
-        card = Cards()
-        
-    call class functions
-        while  player.continueGameChoice
-            player.playerGuess()
-            card.drawCard()
-            card.updateScore()
-            if card.updateScore() < 0
-                - player.startOver()
-                if player.continueGameChoice
-                    card.restartvalues
-            else
-                - player.keepPlaying()
-
-
-
-if __name__ = '__main__':
-    main()
-
-Testing / Debugging - Alberto
+## Authors
+---
+* Jason Macdonald 
+* Shawn Jensen
+* Alberto Almada
+* Victor Lopez
