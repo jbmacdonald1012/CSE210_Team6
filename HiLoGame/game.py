@@ -31,7 +31,7 @@ class Cards:
         - updateScore(roundScore, totalScore)
             - calculate 
             - evaluateScore
-                if totalScore < 0
+                if totalScore <= 0
                     print Game Over
                 else
                     -display score
@@ -53,7 +53,7 @@ class Cards:
         self.previouscard = self.cardvalue
 
     def playerGuess (self) :
-        self.playerInput = (input("higher or lower? "))
+        self.playerInput = (input("higher or lower [h/l]? "))
 
     def updatescore(self):
         if self.cardvalue > self.previouscard:
@@ -111,7 +111,7 @@ def gameplay(card, player):
     card.drawcard()
     card.updatescore()
 
-    if card.total < 0: 
+    if card.total <= 0: 
         print('Game Over. Your score is less than 0.')
         print()
         restart = player.startOver()
