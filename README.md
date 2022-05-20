@@ -7,5 +7,6 @@ Jason Macdonald
 Shawn Jensen
 Victor Lopez
 Alberto Almada
+Miguel Pano
 
 Hilo Game
