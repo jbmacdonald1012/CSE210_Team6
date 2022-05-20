@@ -8,21 +8,21 @@ This game is a variation of Hangman game.
 <<<<<<< HEAD
 Classes needed: 
 
-    Word
+    Word - Alberto
         creating list of words
             - words cannot be manipulated by other methods/classes
 
-    Terminal Service
+    Terminal Service - Shawn
         Read inputs
         Validate
         Create Output
 
-    Jumper
+    Jumper - Victor
         Represents the jumper
 
         jumper = ['----', '/____\', '\    /', '\  /', 'O','/|\', '/ \', '^^^^^^^']
 
-    Director: 
+    Director: - Jason
         startGame
         Gameplay
         inputs
@@ -67,6 +67,7 @@ _doOutputs() : None
 
 -----------------------------------
 
+Class word : get word
 readInput : string
 validate : boolean
 createOuput : string
@@ -74,15 +75,18 @@ createOuput : string
 
 ======== Jumper ===========
 
+Create List [['----', '/____\', '\    /', '\  /', 'O','/|\', '/ \', '^^^^^^^']]
+draw : the jumper and parachute
+delete : parachute by index
 
 ---------------------------
 
 
-
-
-
 ======== WORD ========
 
+Create list [words]
+random choice : get word
+    use access modiifer to make private
 
 ----------------------
 
