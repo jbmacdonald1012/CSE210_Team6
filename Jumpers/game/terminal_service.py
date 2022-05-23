@@ -17,17 +17,7 @@ class TerminalService:
         """
         return input(prompt)
 
-    def read_number(self, prompt):
-        """Gets numerical input from the terminal. Directs the user with the given prompt.
 
-        Args: 
-            self (TerminalService): An instance of TerminalService.
-            prompt (string): The prompt to display on the terminal.
-
-        Returns:
-            float: The user's input as a number.
-        """
-        return float(input(prompt))
         
     def write_text(self, text):
         """Displays the given text on the terminal. 
