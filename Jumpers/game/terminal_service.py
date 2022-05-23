@@ -17,8 +17,6 @@ class TerminalService:
         """
         return input(prompt)
 
-
-        
     def write_text(self, text):
         """Displays the given text on the terminal. 
 
