@@ -1,4 +1,13 @@
+from jumper import jumper
+    
 class TerminalService:
+    def __init__(self):
+        self.word = ""
+
+    jumper = jumper()
+
+    
+
     """A service that handles terminal operations.
     
     The responsibility of a TerminalService is to provide input and output operations for the 
@@ -15,6 +24,7 @@ class TerminalService:
         Returns:
             string: The user's input as text.
         """
+        letter_guess = input("Guess a letter [a-z] ")
         return input(prompt)
 
     def write_text(self, text):
@@ -25,3 +35,5 @@ class TerminalService:
             text (string): The text to display.
         """
         print(text)
+
+    #def hidden_word():
