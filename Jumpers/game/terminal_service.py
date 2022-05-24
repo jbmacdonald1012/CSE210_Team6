@@ -44,13 +44,13 @@ class TerminalService:
         return wrong_guesses
 
     def game_over(self, is_playing, hidden_word):
-        _checker = "_ "
-        if _checker in hidden_word:
-            _is_playing = True
+        checker = "_ "
+        if checker in hidden_word:
+            is_playing = True
         else:
-            _is_playing = False
+            is_playing = False
             print("\nCongratulations! You Win!")
             exit()
-        return _is_playing
+        return is_playing
 
    
