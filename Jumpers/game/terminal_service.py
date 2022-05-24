@@ -7,13 +7,6 @@ class TerminalService:
     jumper = jumper()
 
     
-
-    """A service that handles terminal operations.
-    
-    The responsibility of a TerminalService is to provide input and output operations for the 
-    terminal.
-    """
-     
     def read_text(self, prompt):
         """Gets text input from the terminal. Directs the user with the given prompt.
 
@@ -36,4 +29,4 @@ class TerminalService:
         """
         print(text)
 
-    #def hidden_word():
+   
