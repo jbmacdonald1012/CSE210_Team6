@@ -5,5 +5,6 @@ class Words:
     
     def selectRandom(__wordList):
         return random.choice(__wordList).upper()
-
-    print("The word is: ", selectRandom(__wordList))
+    
+    #this print fucntion was create to check the random words selection
+    #print("The word is: ", selectRandom(__wordList))
