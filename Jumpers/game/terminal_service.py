@@ -14,7 +14,7 @@ class TerminalService:
 
     def display_hidden_word(self, word, hidden_word):
         for i in range (len(word)):
-            hidden_word.append("_ ")
+            hidden_word.append("_")
         return(hidden_word) 
     
     def letter_guess(self, prompt):
