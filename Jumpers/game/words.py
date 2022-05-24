@@ -1,10 +1,10 @@
 import random
 
 class Words:
-    __wordList = ['constitucional', 'principles', 'policies', 'obscurity', 'empowers', 'concurrent', 'inquiry', 'constructions', 'visionary', 'probability', 'argument', 'western', 'representatives', 'independence', 'proposed', 'judiciary', 'legislative', 'exigencies', 'amendment']
+    _wordList = ['sense', 'cause', 'strong', 'power', 'point', 'plain', 'union', 'third', 'every', 'local', 'which', 'judge', 'place', 'small', 'office', 'states', 'afford', 'rights', 'under', 'great']
     
-    def selectRandom(__wordList):
-        return random.choice(__wordList).upper()
+    def selectRandom(_wordList):
+        return random.choice(_wordList).upper()
     
     #this print fucntion was create to check the random words selection
-    #print("The word is: ", selectRandom(__wordList))
+    #print("The word is: ", selectRandom(_wordList))
