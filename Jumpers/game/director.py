@@ -1,11 +1,13 @@
 from terminal_service import TerminalService
 from jumper import Jumper
+from words import Words
 
 class Director:
     def __init__(self):
         self.isPlaying = True
-        self.input = ""
-        self.update = ""
+        self._word = Words()
+        self._jumper = Jumper()
+        self._terminal_service = TerminalService()
 
 
     def startGame(self):
@@ -20,8 +22,7 @@ class Director:
             self.doOutputs()
 
     def getInputs(self):
-        service = TerminalService()
-        self.input = service.read_text(prompt)
+        userGuess = self._terminal_service.letter_guess('Guess a letter [a-z]: ')
 
 
     
