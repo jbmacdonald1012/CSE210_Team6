@@ -53,7 +53,7 @@ class Jumper :
         else:
             self._draw_state.pop(0)          
 
-    def jumper_dead(self):
+    def _jumper_dead(self):
         self._draw_state[0] = "    x    "
         self.draw()    
 
