@@ -16,13 +16,33 @@ class Director:
         Args:
             self(Director): an instance of Director.
         """
+        gameWord = setWord(self)
+        
         while self.isPlaying:
             self.getInputs()
             self.doUpdates()
             self.doOutputs()
 
+
     def getInputs(self):
-        userGuess = self._terminal_service.letter_guess('Guess a letter [a-z]: ')
+        prompt = self._terminal_service.letter_guess('Guess a letter [a-z]: ')
+
+
+    def doUpdates(self, gameWord):
+        self._jumper.validate_guess(prompt)
+
+
+
+    def doOutputs(self):
+        self._jumper.get_start()
+
+    def setWord(self):
+        word = self._word.selectRandom()
+
+
+
+
+
 
 
     
