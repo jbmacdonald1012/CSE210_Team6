@@ -8,6 +8,8 @@ class Director:
         self._word = Words()
         self._jumper = Jumper()
         self._terminal_service = TerminalService()
+        self.setWord = ""
+        self.prompt = ""
 
 
     def startGame(self):
@@ -16,7 +18,7 @@ class Director:
         Args:
             self(Director): an instance of Director.
         """
-        gameWord = setWord(self)
+        gameWord = self.setWord(self)
         
         while self.isPlaying:
             self.getInputs()
@@ -29,7 +31,7 @@ class Director:
 
 
     def doUpdates(self, gameWord):
-        self._jumper.validate_guess(prompt)
+        self._jumper.validate_guess(self.prompt)
 
 
 
