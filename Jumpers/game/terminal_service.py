@@ -1,56 +1,41 @@
-from jumper import jumper
-
-word = ""
-hidden_word = ""
-hidden_word_string = ""
-hidden_word_string = hidden_word_string.join(hidden_word)
-wrong_guesses = ""
-
 class TerminalService:
-    def __init__(self):
-        self.word = ""
-
-    jumper = jumper()
-
-    def display_hidden_word(self, word, hidden_word):
-        for i in range (len(word)):
-            hidden_word.append("_")
-        return(hidden_word) 
+    """A service that handles terminal operations.
     
-    def letter_guess(self, prompt):
-        
-        letter_input = input("\nGuess a letter [a-z]: ")
-            
-        for i in range (len(word)):
-            if letter_input.lower() == word[i]:
-                hidden_word.pop(i)
-                hidden_word.insert(i, letter_input.upper() + " ")
-        
-        if letter_input not in word:            
-            if letter_input.lower() not in wrong_guesses:
-                print(f"\nNope, {letter_input.upper()} is not there!")
-                wrong_guesses.append(letter_input.lower())
-            else:
-                print(f"You have already guessed that {letter_input.lower()}!")
-        
-        if len(wrong_guesses) > 0:
-            print(f"Current wrong guesses: {wrong_guesses}")
-                  
-        print()
-        hidden_word_string = ""
-        hidden_word_string = hidden_word_string.join(hidden_word)
-        print(hidden_word_string)
+    The responsibility of a TerminalService is to provide input and output operations for the 
+    terminal.
+    """
+     
+    def read_text(self, prompt):
+        """Gets text input from the terminal. Directs the user with the given prompt.
 
-        return wrong_guesses
+        Args: 
+            self (TerminalService): An instance of TerminalService.
+            prompt (string): The prompt to display on the terminal.
 
-    def game_over(self, is_playing, hidden_word):
-        checker = "_ "
-        if checker in hidden_word:
-            is_playing = True
-        else:
-            is_playing = False
-            print("\nCongratulations! You Win!")
-            exit()
-        return is_playing
+        Returns:
+            string: The user's input as text.
+        """
+        return input(prompt)
+
+    def read_number(self, prompt):
+        """Gets numerical input from the terminal. Directs the user with the given prompt.
+
+        Args: 
+            self (TerminalService): An instance of TerminalService.
+            prompt (string): The prompt to display on the terminal.
+
+        Returns:
+            float: The user's input as a number.
+        """
+        return float(input(prompt))
+        
+    def write_text(self, text):
+        """Displays the given text on the terminal. 
+
+        Args: 
+            self (TerminalService): An instance of TerminalService.
+            text (string): The text to display.
+        """
+        print(text)
 
    
