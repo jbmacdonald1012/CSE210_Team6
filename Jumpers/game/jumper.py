@@ -1,5 +1,3 @@
-from terminal_service import TerminalService
-from words import Words
 class Jumper :
     """The person who jump. 
     
@@ -20,9 +18,12 @@ class Jumper :
         self._draw_state = []
         self._terminal_service = TerminalService()
         self._word = Words()
+        """
+        These are now getting used in the director class - Jason
+
         self._word_chose = ""
         self.words_space = []
-
+        """
     def draw(self):
             for item in self._draw_state :
                 self._terminal_service.write_text(item)
@@ -45,13 +46,18 @@ class Jumper :
         for _ in range(0,len(self._word_chose)):
             self.words_space.append('_')    
 
-    def validate_guess(self):
-        if self._terminal_service.letter_guessed in self._word_chose:
-            self.words_space[self._word_chose.index(self._terminal_service.letter_guessed)] = self._terminal_service.letter_guessed
-        elif len(self._draw_state) <= 4 :
-            self.jumper_dead()
-        else:
-            self._draw_state.pop(0)          
+    """ 
+    I'm taking this method below and moving it to the director class, since it's a part of the doUpdates() method - Jason
+
+    """
+    
+    # def validate_guess(self):
+    #     if self._terminal_service.letter_guessed in self._word_chose:
+    #         self.words_space[self._word_chose.index(self._terminal_service.letter_guessed)] = self._terminal_service.letter_guessed
+    #     elif len(self._draw_state) <= 4 :
+    #         self.jumper_dead()
+    #     else:
+    #         self._draw_state.pop(0)          
 
     def _jumper_dead(self):
         self._draw_state[0] = "    x    "
