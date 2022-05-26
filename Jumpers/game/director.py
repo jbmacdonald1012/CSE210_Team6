@@ -10,7 +10,7 @@ class Director:
         self.terminal_service = TerminalService()
         self.gameWord = ""
         self.prompt = ""
-        self.displayWord = ['_' for letter in self.gameWord]
+        self.displayWord = []#['_' for letter in self.gameWord]
         self.guesses = []
 
 
@@ -20,7 +20,10 @@ class Director:
         Args:
             self(Director): an instance of Director.
         """
-        
+        self.getWord()
+        self.wordIndex()
+        self.terminal_service.write_text(' '.join(self.displayWord))
+        self.jumper.get_start()
         while self.isPlaying:
             self.getInputs()
             self.doUpdates()
@@ -35,40 +38,45 @@ class Director:
         return display
     
     def wordIndex(self):
+        for _ in range(0,len(self.gameWord)):
+            self.displayWord.append('_')    
+        """
         locations = []
         for index, char in enumerate(list(self.gameWord)):
             if char == self.prompt:
                 locations.append(index)
         return locations
-
+        """
     def updateWord(self, index):
         for number in index:
             self.display[index] = self.prompt
 
     def validateGuess(self):
-        if self.prompt == self.prompt.isalpha():
-            if self.prompt in self.guesses:
+    #    if self.prompt == self.prompt.isalpha():
+        if self.prompt in self.guesses:
                 print('You already guessed this letter')
-            elif self.prompt not in self.gameWord:
+        elif self.prompt not in self.gameWord:
                 print(self.prompt, 'is not in the word')
-                self.jumper._draw_state.pop(0)
-                self.prompt.append(self.guesses)
-            else:
+                self.jumper.incorrect_guess()
+                self.guesses.append(self.prompt)
+        else:
                 print('Nice!', self.prompt, 'is in the word!')
-                self.prompt.append(self.guesses)
-                letterIndex = self.wordIndex(self)
-                self.updateWord(self, index)
+                self.guesses.append(self.prompt)
+                self.displayWord[self.gameWord.index(self.prompt)]=self.prompt
+                #letterIndex = self.wordIndex(self)
+                #self.updateWord(self, index)
 
     def checkForWin(self):
         display = ''.join(self.displayWord)
         word = self.gameWord
 
-        if display == word and self.jumper._draw_state > 5:
-            self.isPlaying == False
+        if display == word and len(self.jumper._draw_state) > 5:
+            self.isPlaying = False
             print('\n')
             print('Nice work! You Win!')
-        elif self.jumper._draw_state <= 4:
-            self.jumper._jumper_dead(self)
+        elif len(self.jumper._draw_state) <= 5:
+            self.isPlaying = False
+            self.jumper._jumper_dead()
             print('\n')
             print('Sorry, you didn\'t guess the word' )
             print(f'The word was {self.gameWord}')
@@ -77,18 +85,15 @@ class Director:
         self.prompt = self.terminal_service.read_text('Guess a letter [a-z]: ').upper()
 
     def doUpdates(self):
-        validate_guess(self)
-        checkForWin(self)
+        #add self
+        self.validateGuess()
+        self.checkForWin()
 
     def doOutputs(self):
-        jumper = self.jumper._draw_state
-        wordState = showWord(self)
-
+        wordState = self.showWord()
         self.terminal_service.write_text(wordState)
-        self.terminal_service.write_text(jumper)
-
-
-
-
-
+        self.terminal_service.write_text("")
+        self.jumper.draw()
+        
+        #self.terminal_service.write_text(jumper)
     

@@ -1,3 +1,6 @@
+from game.terminal_service import TerminalService
+from game.words import Words
+
 class Jumper :
     """The person who jump. 
     
@@ -18,10 +21,11 @@ class Jumper :
         self._draw_state = []
         self._terminal_service = TerminalService()
         self._word = Words()
+        
         """
         These are now getting used in the director class - Jason
 
-        self._word_chose = ""
+        self.word_chose = ""
         self.words_space = []
         """
     def draw(self):
@@ -42,9 +46,9 @@ class Jumper :
         ]
         self._draw_state = self._draw_start
         self.draw()
-        self._word_chose = self._word.selectRandom()
-        for _ in range(0,len(self._word_chose)):
-            self.words_space.append('_')    
+       # self._word_chose = self._word.selectRandom()
+        #for _ in range(0,len(self._word_chose)):
+         #   self.words_space.append('_')    
 
     """ 
     I'm taking this method below and moving it to the director class, since it's a part of the doUpdates() method - Jason
@@ -59,7 +63,10 @@ class Jumper :
     #     else:
     #         self._draw_state.pop(0)          
 
+    def incorrect_guess(self):
+        self._draw_state.pop(0)  
+
     def _jumper_dead(self):
         self._draw_state[0] = "    x    "
-        self.draw()    
+          
 

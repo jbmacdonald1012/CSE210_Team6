@@ -1,4 +1,4 @@
-class __TerminalService:
+class TerminalService:
     """A service that handles terminal operations.
     
     The responsibility of a TerminalService is to provide input and output operations for the 
@@ -36,6 +36,6 @@ class __TerminalService:
             self (TerminalService): An instance of TerminalService.
             text (string): The text to display.
         """
-        print(text)
+        return print(text)
 
    
