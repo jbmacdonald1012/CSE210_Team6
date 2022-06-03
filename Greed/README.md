@@ -35,19 +35,19 @@ Folders:
     -- Game
       -- __main__.py
 
-      -- Casting 
+      -- Casting - Shawn
         -- actor.py
         -- score.py
         -- cast.py
 
-      -- Directing
+      -- Directing - Victor
         --director.py
 
-      -- Services
+      -- Services - Jason
         --keyboardService.py
         --videoService.py
 
-      -- Shared
+      -- Shared - Alberto
         -- color.py
         -- point.py
 
