@@ -1,4 +1,4 @@
-# GEMS
+# GREED
 
 
 ---
@@ -37,7 +37,7 @@ Folders:
 
       -- Casting 
         -- actor.py
-        -- artifact.py
+        -- score.py
         -- cast.py
 
       -- Directing
@@ -50,3 +50,34 @@ Folders:
       -- Shared
         -- color.py
         -- point.py
+
+
+
+What do we need:
+
+Objects:
+-Window: 600 x 900
+-Gems:  ( * )
+-Rocks: ( o )
+-Player: ( # )
+-Score: number
+-Colors: random colors
+-Banner: Greed
+
+Behavior: 
+-Change Player position (Left and Right at bottom of screen)
+-Change Gem position
+  -Clear previous gem position once they move
+-Change Rock position
+  -Clear previous rock position once they move
+-Update score
+-Randomly generate gems at top
+-Randomly generate rocks at top
+-Gems disappear at the bottom (if not caught)
+-Rocks disappear at the bottom (if not touched)
+-Gems disappear if caught
+-Rocks disappear if touched
+-Game loop (as long as the window is open this loop runs)
+-Close window (close the window and release the resources)
+
+
