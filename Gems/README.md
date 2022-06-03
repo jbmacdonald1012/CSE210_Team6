@@ -28,3 +28,25 @@ Victor Lopez
 Alberto Almada
 Shawn Jensen
 Jason Macdonald
+
+
+Folders:
+  --Gems
+    -- Game
+      -- __main__.py
+
+      -- Casting 
+        -- actor.py
+        -- artifact.py
+        -- cast.py
+
+      -- Directing
+        --director.py
+
+      -- Services
+        --keyboardService.py
+        --videoService.py
+
+      -- Shared
+        -- color.py
+        -- point.py
