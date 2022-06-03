@@ -1,5 +1,5 @@
-# GAME TITLE
-Game Description
+# GEMS
+
 
 ---
 ## Getting Started
@@ -24,3 +24,7 @@ Python 3.8.0
 
 ## Authors
 
+Victor Lopez
+Alberto Almada
+Shawn Jensen
+Jason Macdonald
