@@ -10,3 +10,5 @@ Alberto Almada
 Miguel Pano
 
 Hilo Game
+Jumpers Game
+Gems Game
