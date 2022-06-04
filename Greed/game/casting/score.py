@@ -1,31 +1,31 @@
 from game.casting.actor import Actor
 
 
-class Score(Actor):
+class Artifact(Actor):
     """
     An item of cultural or historical interest. 
     
-    The responsibility of an Artifact is to provide a score about itself.
+    The responsibility of an Artifact is to provide a message about itself.
 
     Attributes:
-        _score (string): A short description about the artifact.
+        _message (string): A short description about the artifact.
     """
     def __init__(self):
         super().__init__()
-        self._score = ""
+        self._message = ""
         
-    def get_score(self):
-        """Gets the artifact's score.
+    def get_message(self):
+        """Gets the artifact's message.
         
         Returns:
-            string: The score.
+            string: The message.
         """
-        return self._score
+        return self._message
     
-    def set_score(self, score):
-        """Updates the score to the given one.
+    def set_message(self, message):
+        """Updates the message to the given one.
         
         Args:
-            score (string): The given score.
+            message (string): The given message.
         """
-        self._score = score
+        self._message = message
