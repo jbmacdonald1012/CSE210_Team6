@@ -1,4 +1,5 @@
 from math import isclose
+"""isclode method can check whether two values aro close or not."""
 
 class Point:
     """The distance from a relative origin (0, 0).
@@ -38,7 +39,7 @@ class Point:
         """Whether or not this Point is equal to the given one.
 
         Args:
-            other (Point): The Point to compare.
+            other (Point): Points to compare.
 
         Returns: 
             boolean: True if both x and y are equal; false if otherwise.
