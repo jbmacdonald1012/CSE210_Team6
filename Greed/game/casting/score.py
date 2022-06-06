@@ -12,7 +12,7 @@ class Score(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._score = ""
+        self._score = 0
         
     def get_score(self):
         """Gets the artifact's score.

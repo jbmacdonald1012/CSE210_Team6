@@ -1,4 +1,5 @@
 from game.shared.point import Point
+import random
 
 class Director:
     """A person who directs the game. 
@@ -19,6 +20,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self.frame_create=0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -41,7 +43,13 @@ class Director:
         """
         hero = cast.get_first_actor("heros")
         velocity = self._keyboard_service.get_direction()
-        hero.set_velocity(velocity)        
+        hero.set_velocity(velocity)  
+
+        if self.frame_create == 6:
+            cast.add_rock()   
+            self.frame_create = 0
+        else: 
+            self.frame_create += 1
 
     def _do_updates(self, cast):
         """Updates the hero's position and resolves any collisions with artifacts.
@@ -49,7 +57,7 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """       
-        cast.add_rock()
+        
 
         banner = cast.get_first_actor("banners")
         hero = cast.get_first_actor("heros")
@@ -62,13 +70,12 @@ class Director:
         hero.move_next(max_x, max_y)
 
         
-        
         for artifact in artifacts:
                 # for when hero hits the artifact
             if hero.get_position().equals(artifact.get_position()):
                 #message = artifact.get_message()
                 #banner.set_text(message)   
-                cast.remove_actor("artifacts", artifact) 
+                
                 if artifact.get_text() == "*":
                 # update points 
                     score = banner.get_score()
@@ -80,10 +87,16 @@ class Director:
                     score -= 1
                     banner.set_score(score) 
 
-            # makes artifact move 
-            artifact.move_next(max_x, max_y)
+                cast.remove_actor("artifacts", artifact) 
 
-            if artifact.get_position().get_y()>= 550:
+            # makes artifact move 
+            if artifact.get_time() == 6:
+                artifact.move_next(max_x, max_y)   
+                artifact.change_time(-6)
+            else: 
+                artifact.change_time(1)
+           
+            if artifact.get_position().get_y()>= 585:
                 cast.remove_actor("artifacts", artifact) 
         
     def _do_outputs(self, cast):

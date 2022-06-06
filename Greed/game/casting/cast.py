@@ -94,7 +94,7 @@ class Cast:
         text = random.choice(["*","0"])
 
         x = random.randint(1, COLS - 1)
-        y = (0)
+        y = 1
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
 
@@ -108,5 +108,6 @@ class Cast:
         artifact.set_font_size(FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_velocity(Point(0,1).scale(CELL_SIZE))
+        artifact.set_velocity(Point(0, 15)) 
+        artifact.set_time(0)
         self.add_actor("artifacts", artifact)
