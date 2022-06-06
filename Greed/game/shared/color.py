@@ -27,7 +27,7 @@ class Color:
         self._alpha = alpha
 
     def to_tuple(self):
-        """Gets the color as a tuple of four values (yellow, green, blue, alpha).
+        """Gets the color as a tuple of four values (red, green, blue, alpha).
 
         Returns:
             Tuple(int, int, int, int): The color as a tuple.
