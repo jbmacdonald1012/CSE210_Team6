@@ -1,5 +1,5 @@
 from math import isclose
-"""isclode method can check whether two values aro close or not."""
+"""isclose method can check whether two values aro close or not."""
 
 class Point:
     """The distance from a relative origin (0, 0).
