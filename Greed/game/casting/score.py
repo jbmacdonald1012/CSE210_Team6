@@ -3,19 +3,19 @@ from game.casting.actor import Actor
 
 class Score(Actor):
     """
-    An item of cultural or historical interest. 
+    The way a player tracks their greed. 
     
-    The responsibility of an Artifact is to provide a score about itself.
+    The responsibility of the score is to track a player's greed.
 
     Attributes:
-        _score (string): A short description about the artifact.
+        _score (string): The player's score which updates based on if they touch a gem or a rock.
     """
     def __init__(self):
         super().__init__()
         self._score = 0
         
     def get_score(self):
-        """Gets the artifact's score.
+        """Gets the player's score.
         
         Returns:
             string: The score.
