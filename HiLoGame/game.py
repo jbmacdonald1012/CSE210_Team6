@@ -105,11 +105,23 @@ def main():
     gameplay(card, player)
 
 def gameplay(card, player):
+    """
+        The function creates and manages the game loop. 
+
+        Args:
+            card - an instance of the Card class
+            player - an instance of the Player class
+    """
+
     card.drawcard()
     card.setPreviousCard()
     card.playerGuess()
     card.drawcard()
     card.updatescore()
+
+    """
+        Condiontial statements to check and update the status of the game.
+    """
 
     if card.total <= 0: 
         print('Game Over. Your score is less than 0.')
