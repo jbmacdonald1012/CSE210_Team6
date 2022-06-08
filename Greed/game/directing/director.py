@@ -36,7 +36,7 @@ class Director:
         self._video_service.close_window()
 
     def _get_inputs(self, cast):
-        """Gets directional input from the keyboard and applies it to the hero.
+        """Gets directional input from the keyboard and applies it to the player.
         
         Args:
             cast (Cast): The cast of actors.
@@ -52,7 +52,7 @@ class Director:
             self.frame_create += 1
 
     def _do_updates(self, cast):
-        """Updates the hero's position and resolves any collisions with artifacts.
+        """Updates the player's position and resolves any collisions with gems or rocks.
         
         Args:
             cast (Cast): The cast of actors.
