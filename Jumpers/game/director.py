@@ -78,7 +78,6 @@ class Director:
         self.prompt = self.terminal_service.read_text('Guess a letter [a-z]: ').upper()
 
     def doUpdates(self):
-        #add self
         self.validateGuess()
         self.checkForWin()
 
