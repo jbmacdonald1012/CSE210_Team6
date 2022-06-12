@@ -40,19 +40,13 @@ class Director:
     def wordIndex(self):
         for _ in range(0,len(self.gameWord)):
             self.displayWord.append('_')    
-        """
-        locations = []
-        for index, char in enumerate(list(self.gameWord)):
-            if char == self.prompt:
-                locations.append(index)
-        return locations
-        """
+
     def updateWord(self, index):
         for number in index:
             self.display[index] = self.prompt
 
     def validateGuess(self):
-    #    if self.prompt == self.prompt.isalpha():
+    
         if self.prompt in self.guesses:
                 print('You already guessed this letter')
         elif self.prompt not in self.gameWord:
@@ -63,8 +57,7 @@ class Director:
                 print('Nice!', self.prompt, 'is in the word!')
                 self.guesses.append(self.prompt)
                 self.displayWord[self.gameWord.index(self.prompt)]=self.prompt
-                #letterIndex = self.wordIndex(self)
-                #self.updateWord(self, index)
+                
 
     def checkForWin(self):
         display = ''.join(self.displayWord)
@@ -95,5 +88,5 @@ class Director:
         self.terminal_service.write_text("")
         self.jumper.draw()
         
-        #self.terminal_service.write_text(jumper)
+       
     
