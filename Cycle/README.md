@@ -27,3 +27,18 @@ root                    (project root folder)
 * Alberto Almada
 * Shawn Jensen
 * Jason Macdonald
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Assignments
+
+Jason - Scritping Classes and main file 
+Shawn - Casting Classes 
+Alberto - Shared Folder - Point and Color Classes and constants file in game folder
+Victor - Services Folder - Keyboard and Video Services and Director Class in directing folder
+
+TEAM EFFORT/INTEGRATION - Update README file and any other minor changes needed for the game 
+
