@@ -1,6 +1,5 @@
 
 
-
 COLUMNS = 40
 ROWS = 20
 CELL_SIZE = 15
