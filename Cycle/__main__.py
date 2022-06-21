@@ -5,7 +5,8 @@ from game.casting.score import Score
 from game.casting.cycle1 import Cycle1
 from game.casting.cycle2 import Cycle2
 from game.scripting.script import Script
-from game.scripting.controlActorsAction import ControlActorsAction
+from game.scripting.controlActorsAction1 import ControlActorsAction1
+from game.scripting.controlActorsAction2 import ControlActorsAction2
 from game.scripting.moveActorsAction import MoveActorsAction
 from game.scripting.handleCollisionsAction import HandleCollisionsAction
 from game.scripting.drawActorsAction import DrawActorsAction
@@ -31,7 +32,8 @@ def main():
     video_service = VideoService()
 
     script = Script()
-    script.add_action("input", ControlActorsAction(keyboard_service))
+    script.add_action("input", ControlActorsAction1(keyboard_service))
+    script.add_action("input", ControlActorsAction2(keyboard_service))
     script.add_action("update", MoveActorsAction())
     script.add_action("update", HandleCollisionsAction())
     script.add_action("output", DrawActorsAction(video_service))
