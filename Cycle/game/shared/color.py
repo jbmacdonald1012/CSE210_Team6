@@ -15,7 +15,7 @@ class Color:
         """Constructs a new Color using the specified red, green, blue and alpha values. The alpha 
         value is the color's opacity.
         
-        Use "int" to chose an integer value in RGB scale. 
+        Used "int" to chose an integer value in RGB scale. 
         
         Args:
             red (int): A red value.
