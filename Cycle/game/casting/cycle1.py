@@ -16,7 +16,7 @@ class Cycle1(Actor):
         super().__init__()
         self._segments = []
         self._prepare_body()
-        self.turn_head(velocity= 5)
+        
 
 
     def get_segments(self):
