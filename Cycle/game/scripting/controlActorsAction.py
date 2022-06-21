@@ -47,7 +47,7 @@ class ControlActorsAction(Action):
             self._direction = Point(0, constants.CELL_SIZE)
 
         cycle1 = cast.get_first_actor('cycle1')
-        cycle1.turn_bike(self._direction)
+        cycle1.turn_head(self._direction)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -74,4 +74,4 @@ class ControlActorsAction(Action):
             self._direction = Point(0, constants.CELL_SIZE)
 
         cycle2 = cast.get_first_actor('cycle2')
-        cycle2.turn_bike(self._direction)
+        cycle2.turn_head(self._direction)

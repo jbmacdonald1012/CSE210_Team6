@@ -20,9 +20,11 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("cycle1s", Cycle1())
-    cast.add_actor("cycle2s", Cycle2())
-    cast.add_actor("scores", Score())
+    cast.add_actor("cycle1", Cycle1())
+    cast.add_actor("cycle2", Cycle2())
+    cast.add_actor("score1", Score(1))
+    cast.add_actor("score2", Score(2))
+
    
     # start the game
     keyboard_service = KeyboardService()

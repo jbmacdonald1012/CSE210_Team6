@@ -12,12 +12,11 @@ class Cycle2(Actor):
     Attributes:
         _points (int): The number of points the food is worth.
     """
-    def __init__(self, x, y):
+    def __init__(self):
         super().__init__()
         self._segments = []
-        self._x = x
-        self._y = y
         self._prepare_body()
+        self.turn_head(velocity= 5)
 
 
     def get_segments(self):
@@ -56,11 +55,11 @@ class Cycle2(Actor):
         self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
-        # x = int(constants.MAX_X / 2)
-        # y = int(constants.MAX_Y / 2)
+        x = int(constants.MAX_X / 3)
+        y = int(constants.MAX_Y / 3)
 
-        x = self._x                        
-        y = self._y
+        # x = self._x                        
+        # y = self._y
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
