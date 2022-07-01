@@ -34,7 +34,8 @@ Main Scene
 
 Start button
 Help button
-Game Scene
+Game Scene player one
+Game Score player two
 User-controlled paddle player one
 User-controlled paddle player two
 Puck Movement
@@ -49,9 +50,5 @@ Back button
 Win Scene
 
 Announcement
-Smiley face animation
+You win (Stanley Cup pic?)
 Lose Scene
-
-Announcement
-Sad face animation
-Restart button
