@@ -37,10 +37,9 @@ Help button
 Game Scene
 User-controlled paddle player one
 User-controlled paddle player two
-Angled ball movement
-Multicolored bricks
+Puck Movement
 Collision detection
-Life display
+Goal detection
 Score display
 Sound effects
 Help Scene
