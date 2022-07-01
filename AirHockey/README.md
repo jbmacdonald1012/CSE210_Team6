@@ -69,7 +69,7 @@ Game Folder
 
   Services folder 
 
-  hared folder 
+  shared folder 
 
 Constants.py
 Main.py
