@@ -28,4 +28,31 @@ root                    (project root folder)
 * Shawn Jensen
 * Jason Macdonald
 
+Wish List
 
+Main Scene
+
+Start button
+Help button
+Game Scene
+User-controlled paddle player one
+User-controlled paddle player two
+Angled ball movement
+Multicolored bricks
+Collision detection
+Life display
+Score display
+Sound effects
+Help Scene
+
+Help text
+Back button
+Win Scene
+
+Announcement
+Smiley face animation
+Lose Scene
+
+Announcement
+Sad face animation
+Restart button
