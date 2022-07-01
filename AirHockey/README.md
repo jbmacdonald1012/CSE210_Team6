@@ -28,27 +28,48 @@ root                    (project root folder)
 * Shawn Jensen
 * Jason Macdonald
 
-Wish List
+*Feature List*
 
 Main Scene
+  Start button
+  Help button
 
-Start button
-Help button
-Game Scene player one
-Game Score player two
-User-controlled paddle player one
-User-controlled paddle player two
-Puck Movement
-Collision detection
-Goal detection
-Score display
-Sound effects
+Game Scene
+  Game Scene player one
+  Game Score player two
+  User-controlled paddle player one
+  User-controlled paddle player two
+  Puck Movement
+  Collision detection
+  Goal detection
+  Score display
+  Sound effects
+
 Help Scene
+  Display Hhlp text
+  Back button
 
-Help text
-Back button
 Win Scene
+  Announcement
+  You win (Stanley Cup pic?)
 
-Announcement
-You win (Stanley Cup pic?)
-Lose Scene
+*Program outline"
+
+Assets Folder
+  Images 
+  Sounds
+
+Game Folder
+
+  Casting folder
+
+  Directing folder 
+
+  Scripting folder 
+
+  Services folder 
+
+  hared folder 
+
+Constants.py
+Main.py
