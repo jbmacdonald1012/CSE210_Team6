@@ -2,10 +2,6 @@ from constants import *
 from game.casting.actor import Actor
 from game.casting.point import Point
 
-"""
-    Now let's modify the paddle's movement. Also the images and let us get the body
-"""
-
 class Paddle(Actor):
     """A implement used to hit and bounce the paddle in the game."""
     

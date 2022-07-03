@@ -3,11 +3,6 @@ from constants import *
 from game.casting.actor import Actor
 from game.casting.point import Point
 
-"""
-    This module makes it possible to modify the puck, which is the spherical object that is bounced around in the game
-    Posibilities: Here you will be able to modify its image, its position, its velocity, and its body
-"""
-
 class Puck(Actor):
     """A solid, spherical object that is bounced around in the game."""
     
