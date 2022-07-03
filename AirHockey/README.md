@@ -28,6 +28,8 @@ root                    (project root folder)
 * Shawn Jensen
 * Jason Macdonald
 
+## Images created originally or obtained form opengameart.org
+
 *Feature List*
 
 Main Scene
