@@ -2,12 +2,14 @@ import csv
 from constants import *
 from game.casting.animation import Animation
 #from game.casting.ball import Ball
-from game.casting.puck import Puck
+
 from game.casting.body import Body
 #from game.casting.brick import Brick
 from game.casting.image import Image
 from game.casting.label import Label
+from game.casting.paddle import Paddle
 from game.casting.point import Point
+from game.casting.puck import Puck
 # from game.casting.racket import Racket
 from game.casting.stats import Stats
 from game.casting.text import Text 
@@ -21,6 +23,8 @@ from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.draw_bricks_action import DrawBricksAction
 # from game.scripting.draw_dialog_action import DrawDialogAction
 # from game.scripting.draw_hud_action import DrawHudAction
+from game.scripting.draw_paddle_action import DrawPaddleAction
+from game.scripting.draw_paddle2_action import DrawPaddle2Action
 from game.scripting.draw_puck_action import DrawPuckAction
 # from game.scripting.draw_racket_action import DrawRacketAction
 from game.scripting.end_drawing_action import EndDrawingAction
@@ -56,6 +60,8 @@ class SceneManager:
     # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     # DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     # DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
+    DRAW_PADDLE_ACTION = DrawPaddleAction(VIDEO_SERVICE)
+    DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
     DRAW_PUCK_ACTION = DrawPuckAction(VIDEO_SERVICE)
     # DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
@@ -92,6 +98,8 @@ class SceneManager:
         #self._add_lives(cast)
         #self._add_score(cast)
         #self._add_ball(cast)
+        self._add_paddle1(cast)
+        self._add_paddle2(cast)
         self._add_puck(cast)
         #self._add_bricks(cast)
         #self._add_racket(cast)
@@ -176,6 +184,30 @@ class SceneManager:
         image = Image(PUCK_IMAGE)
         puck = Puck(body, image, True)
         cast.add_actor(PUCK_GROUP, puck)
+    
+    def _add_paddle1(self, cast):
+        cast.clear_actors(PADDLE_ONE_GROUP)
+        x = CENTER_X / 2
+        y = CENTER_Y
+        position = Point(x, y)
+        size = Point(PADDLE_WIDTH, PADDLE_HEIGHT)
+        velocity = Point(0, 0)
+        body = Body(position, size, velocity)
+        image = Image(PADDLE_IMAGE_1)
+        paddle = Paddle(body, image, True)
+        cast.add_actor(PADDLE_ONE_GROUP, paddle)
+        
+    def _add_paddle2(self, cast):
+        cast.clear_actors(PADDLE_TWO_GROUP)
+        x = CENTER_X + (CENTER_X / 2)
+        y = CENTER_Y
+        position = Point(x, y)
+        size = Point(PADDLE_WIDTH, PADDLE_HEIGHT)
+        velocity = Point(0, 0)
+        body = Body(position, size, velocity)
+        image = Image(PADDLE_IMAGE_2)
+        paddle = Paddle(body, image, True)
+        cast.add_actor(PADDLE_TWO_GROUP, paddle)
 
     # def _add_bricks(self, cast):
     #     cast.clear_actors(BRICK_GROUP)
@@ -269,6 +301,8 @@ class SceneManager:
     def _add_output_script(self, script):
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
+        script.add_action(OUTPUT, self.DRAW_PADDLE_ACTION)
+        script.add_action(OUTPUT, self.DRAW_PADDLE2_ACTION)
         script.add_action(OUTPUT, self.DRAW_PUCK_ACTION)
         #script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         #script.add_action(OUTPUT, self.DRAW_BALL_ACTION)

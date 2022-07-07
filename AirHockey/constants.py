@@ -29,12 +29,12 @@ PUCK_HEIGHT = 28
 PUCK_VELOCITY = 6
 
 # paddle
-PADDLE_ONE = "paddle"
-PADDLE_TWO = "paddle2"
-PADDLE_IMAGES = "air_hockey/assets/images/paddle.png"
-PADDLE_IMAGES = "air_hockey/assets/images/paddle2.png"
-PADDLE_WIDTH = 100
-PADDLE_HEIGHT = 99
+PADDLE_ONE_GROUP = "paddle"
+PADDLE_TWO_GROUP = "paddle2"
+PADDLE_IMAGE_1 = "AirHockey/assets/images/paddle.png"
+PADDLE_IMAGE_2 = "AirHockey/assets/images/paddle2.png"
+PADDLE_WIDTH = 35  
+PADDLE_HEIGHT = 35
 PADDLE_RATE = 6
 PADDLE_VELOCITY = 8
 
