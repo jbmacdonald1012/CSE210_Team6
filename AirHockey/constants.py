@@ -1,4 +1,16 @@
 # CASTING CONSTANTS
+from game.casting.color import Color
+
+
+# GAME
+GAME_NAME = "Air Hockey"
+FRAME_RATE = 60
+
+# SCREEN
+SCREEN_WIDTH = 1040
+SCREEN_HEIGHT = 680
+CENTER_X = SCREEN_WIDTH / 2
+CENTER_Y = SCREEN_HEIGHT / 2
 
 # STATS
 STATS_GROUP = "stats"
@@ -11,9 +23,9 @@ SURFACE_HEIGHT = 669
 
 # PUCK
 PUCK_GROUP = "pucks"
-PUCK_IMAGE = "air_hockey/assets/images/puck.png"
-PUCK_WIDTH = 50
-PUCK_HEIGHT = 50
+PUCK_IMAGE = "AirHockey/assets/images/puck.png"
+PUCK_WIDTH = 28
+PUCK_HEIGHT = 28
 PUCK_VELOCITY = 6
 
 # paddle
@@ -35,3 +47,37 @@ FONT_LARGE = 48
 ALIGN_CENTER = 0
 ALIGN_LEFT = 1
 ALIGN_RIGHT = 2
+
+# SCENES
+NEW_GAME = 0
+TRY_AGAIN = 1
+NEXT_LEVEL = 2
+IN_PLAY = 3
+GAME_OVER = 4
+
+# PHASES
+INITIALIZE = 0
+LOAD = 1
+INPUT = 2
+UPDATE = 3
+OUTPUT = 4
+UNLOAD = 5
+RELEASE = 6
+
+# KEYS
+LEFT = "left"
+RIGHT = "right"
+SPACE = "space"
+ENTER = "enter"
+PAUSE = "p"
+
+# COLORS
+BLACK = Color(0, 0, 0)
+WHITE = Color(255, 255, 255)
+PURPLE = Color(255, 0, 255)
+
+# DIALOG
+DIALOG_GROUP = "dialogs"
+ENTER_TO_START = "PRESS ENTER TO START"
+PREP_TO_LAUNCH = "PREPARING TO LAUNCH"
+WAS_GOOD_GAME = "GAME OVER"
