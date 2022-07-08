@@ -9,7 +9,15 @@ class ControlPaddleActionTwo(Action):
         
     def execute(self, cast, script, callback):
         paddle = cast.get_first_actor(PADDLE_TWO_GROUP)
-        if self._keyboard_service.is_key_down(J_KEY): 
+        if self._keyboard_service.is_key_down(I_KEY) and self._keyboard_service.is_key_down(L_KEY): 
+            paddle.swing_upright()
+        elif self._keyboard_service.is_key_down(I_KEY) and self._keyboard_service.is_key_down(J_KEY):
+            paddle.swing_upleft()
+        elif self._keyboard_service.is_key_down(K_KEY) and self._keyboard_service.is_key_down(J_KEY):
+            paddle.swing_downleft()
+        elif self._keyboard_service.is_key_down(K_KEY) and self._keyboard_service.is_key_down(L_KEY):
+            paddle.swing_downright()
+        elif self._keyboard_service.is_key_down(J_KEY): 
             paddle.swing_left()
         elif self._keyboard_service.is_key_down(L_KEY): 
             paddle.swing_right()

@@ -23,7 +23,7 @@ from game.scripting.control_paddle_action import ControlPaddleAction
 from game.scripting.control_paddle_action_two import ControlPaddleActionTwo
 # from game.scripting.draw_ball_action import DrawBallAction
 # from game.scripting.draw_bricks_action import DrawBricksAction
-# from game.scripting.draw_dialog_action import DrawDialogAction
+from game.scripting.draw_dialog_action import DrawDialogAction
 # from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_paddle_action import DrawPaddleAction
 from game.scripting.draw_paddle2_action import DrawPaddle2Action
@@ -65,7 +65,7 @@ class SceneManager:
     CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
     # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
     # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
-    # DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
+    DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     # DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
     DRAW_PADDLE_ACTION = DrawPaddleAction(VIDEO_SERVICE)
     DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
@@ -341,7 +341,7 @@ class SceneManager:
         #script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
         #script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         #script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)
-        #script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
+        script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
         script.add_action(OUTPUT, self.END_DRAWING_ACTION)
 
     def _add_release_script(self, script):
@@ -355,9 +355,6 @@ class SceneManager:
     def _add_update_script(self, script):
 
         script.clear_actions(UPDATE)
-    #    script.add_action(UPDATE, self.MOVE_STRIKER_ACTION)
-    #    script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
-    #     script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION_TWO)
