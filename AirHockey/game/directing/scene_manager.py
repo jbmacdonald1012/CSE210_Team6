@@ -20,6 +20,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.collide_brick_action import CollideBrickAction
 # from game.scripting.collide_racket_action import CollideRacketAction
 from game.scripting.control_paddle_action import ControlPaddleAction
+from game.scripting.control_paddle_action_two import ControlPaddleActionTwo
 # from game.scripting.draw_ball_action import DrawBallAction
 # from game.scripting.draw_bricks_action import DrawBricksAction
 # from game.scripting.draw_dialog_action import DrawDialogAction
@@ -35,6 +36,7 @@ from game.scripting.load_assets_action import LoadAssetsAction
 # from game.scripting.move_ball_action import MoveBallAction
 # from game.scripting.move_racket_action import MoveRacketAction
 from game.scripting.move_paddle_action import MovePaddleAction
+from game.scripting.move_paddle_action_two import MovePaddleActionTwo
 from game.scripting.play_sound_action import PlaySoundAction
 from game.scripting.release_devices_action import ReleaseDevicesAction
 from game.scripting.start_drawing_action import StartDrawingAction
@@ -60,6 +62,7 @@ class SceneManager:
     # COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
+    CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
     # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
     # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     # DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
@@ -74,8 +77,8 @@ class SceneManager:
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     # MOVE_BALL_ACTION = MoveBallAction()
     # MOVE_RACKET_ACTION = MoveRacketAction()
-    MOVE_PADDLE_ACTION1 = PADDLE_ONE_GROUP
-    MOVE_PADDLE_ACTION2 = PADDLE_TWO_GROUP
+    MOVE_PADDLE_ACTION = MovePaddleAction()
+    MOVE_PADDLE_ACTION_TWO = MovePaddleActionTwo()
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)

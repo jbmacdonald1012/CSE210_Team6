@@ -79,6 +79,10 @@ W_KEY = "w"
 A_KEY = "a"
 S_KEY = "s"
 D_KEY = "d"
+I_KEY = "i"
+J_KEY = "j"
+K_KEY = "k"
+L_KEY = "l"
 
 # COLORS
 BLACK = Color(0, 0, 0)
