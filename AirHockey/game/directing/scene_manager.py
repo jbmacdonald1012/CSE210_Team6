@@ -73,7 +73,8 @@ class SceneManager:
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     # MOVE_BALL_ACTION = MoveBallAction()
     # MOVE_RACKET_ACTION = MoveRacketAction()
-    MOVE_PADDLE_ACTION = MovePaddleAction()
+    MOVE_PADDLE_ACTION1 = PADDLE_ONE_GROUP
+    MOVE_PADDLE_ACTION2 = PADDLE_TWO_GROUP
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -344,7 +345,9 @@ class SceneManager:
     def _add_update_script(self, script):
 
         script.clear_actions(UPDATE)
-    #     script.add_action(UPDATE, self.MOVE_BALL_ACTION)
+        script.add_action(UPDATE, self.MOVE_STRIKER_ACTION)
+        script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
+    #     script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
