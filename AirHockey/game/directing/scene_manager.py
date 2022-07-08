@@ -194,8 +194,8 @@ class SceneManager:
 
     def _add_puck(self, cast):
         cast.clear_actors(PUCK_GROUP)
-        x = CENTER_X #- PUCK_WIDTH / 2
-        y = CENTER_Y #SCREEN_HEIGHT - PUCK_HEIGHT  
+        x = CENTER_X - PUCK_WIDTH / 2
+        y = CENTER_Y + (40/2) - (PUCK_HEIGHT/2)  
         position = Point(x, y)
         size = Point(PUCK_WIDTH, PUCK_HEIGHT)
         velocity = Point(0, 0)
@@ -206,8 +206,8 @@ class SceneManager:
     
     def _add_paddle1(self, cast):
         cast.clear_actors(PADDLE_ONE_GROUP)
-        x = CENTER_X / 2
-        y = CENTER_Y
+        x = (CENTER_X / 4)-(PADDLE_WIDTH/2)
+        y = CENTER_Y + (40/2) - (PADDLE_HEIGHT/2)  
         position = Point(x, y)
         size = Point(PADDLE_WIDTH, PADDLE_HEIGHT)
         velocity = Point(0, 0)
@@ -218,7 +218,7 @@ class SceneManager:
         
     def _add_paddle2(self, cast):
         cast.clear_actors(PADDLE_TWO_GROUP)
-        x = CENTER_X + (CENTER_X / 2)
+        x = CENTER_X + (CENTER_X *3 / 4) - (PADDLE_WIDTH/2)
         y = CENTER_Y
         position = Point(x, y)
         size = Point(PADDLE_WIDTH, PADDLE_HEIGHT)

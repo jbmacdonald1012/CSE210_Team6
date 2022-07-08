@@ -24,8 +24,8 @@ SURFACE_HEIGHT = 669
 # PUCK
 PUCK_GROUP = "pucks"
 PUCK_IMAGE = "AirHockey/assets/images/puck.png"
-PUCK_WIDTH = 28
-PUCK_HEIGHT = 28
+PUCK_WIDTH = 50
+PUCK_HEIGHT = 50
 PUCK_VELOCITY = 6
 
 # paddle
@@ -33,8 +33,8 @@ PADDLE_ONE_GROUP = "paddle"
 PADDLE_TWO_GROUP = "paddle2"
 PADDLE_IMAGE_1 = "AirHockey/assets/images/paddle.png"
 PADDLE_IMAGE_2 = "AirHockey/assets/images/paddle2.png"
-PADDLE_WIDTH = 35  
-PADDLE_HEIGHT = 35
+PADDLE_WIDTH = 60  
+PADDLE_HEIGHT = 60
 PADDLE_RATE = 6
 PADDLE_VELOCITY = 8
 
