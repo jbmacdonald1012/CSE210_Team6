@@ -156,6 +156,7 @@ class SceneManager:
 
         script.clear_actions(INPUT)
         script.add_action(INPUT, self.CONTROL_PADDLE_ACTION)
+        script.add_action(INPUT, self.CONTROL_PADDLE_ACTION_TWO)
         self._add_update_script(script)
         self._add_output_script(script)
 
@@ -354,11 +355,12 @@ class SceneManager:
     def _add_update_script(self, script):
 
         script.clear_actions(UPDATE)
-        script.add_action(UPDATE, self.MOVE_STRIKER_ACTION)
-        script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
+    #    script.add_action(UPDATE, self.MOVE_STRIKER_ACTION)
+    #    script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
     #     script.add_action(UPDATE, self.MOVE_PADDLE_ONE_GROU)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
+        script.add_action(UPDATE, self.MOVE_PADDLE_ACTION_TWO)
     #     script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_RACKET_ACTION)
