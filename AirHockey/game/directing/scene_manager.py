@@ -19,7 +19,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.collide_borders_action import CollideBordersAction
 # from game.scripting.collide_brick_action import CollideBrickAction
 # from game.scripting.collide_racket_action import CollideRacketAction
-# from game.scripting.control_racket_action import ControlRacketAction
+from game.scripting.control_paddle_action import ControlPaddleAction
 # from game.scripting.draw_ball_action import DrawBallAction
 # from game.scripting.draw_bricks_action import DrawBricksAction
 # from game.scripting.draw_dialog_action import DrawDialogAction
@@ -35,10 +35,10 @@ from game.scripting.load_assets_action import LoadAssetsAction
 # from game.scripting.move_ball_action import MoveBallAction
 # from game.scripting.move_racket_action import MoveRacketAction
 from game.scripting.move_paddle_action import MovePaddleAction
-# from game.scripting.play_sound_action import PlaySoundAction
+from game.scripting.play_sound_action import PlaySoundAction
 from game.scripting.release_devices_action import ReleaseDevicesAction
 from game.scripting.start_drawing_action import StartDrawingAction
-# from game.scripting.timed_change_scene_action import TimedChangeSceneAction
+from game.scripting.timed_change_scene_action import TimedChangeSceneAction
 from game.scripting.unload_assets_action import UnloadAssetsAction
 from game.services.raylib.raylib_audio_service import RaylibAudioService
 from game.services.raylib.raylib_keyboard_service import RaylibKeyboardService
@@ -59,6 +59,7 @@ class SceneManager:
     # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
+    CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
     # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
     # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     # DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
@@ -84,12 +85,12 @@ class SceneManager:
     def prepare_scene(self, scene, cast, script):
         if scene == NEW_GAME:
             self._prepare_new_game(cast, script)
-        # elif scene == NEXT_LEVEL:
-        #     self._prepare_next_level(cast, script)
+        elif scene == NEXT_LEVEL:
+            self._prepare_next_level(cast, script)
         # elif scene == TRY_AGAIN:
         #     self._prepare_try_again(cast, script)
-        # elif scene == IN_PLAY:
-        #     self._prepare_in_play(cast, script)
+        elif scene == IN_PLAY:
+            self._prepare_in_play(cast, script)
         # elif scene == GAME_OVER:    
         #     self._prepare_game_over(cast, script)
     
@@ -114,21 +115,26 @@ class SceneManager:
         self._add_initialize_script(script)
         self._add_load_script(script)
         script.clear_actions(INPUT)
-        #script.add_action(INPUT, ChangeSceneAction(self.KEYBOARD_SERVICE, NEXT_LEVEL))
+        script.add_action(INPUT, ChangeSceneAction(self.KEYBOARD_SERVICE, NEXT_LEVEL))
         self._add_output_script(script)
         self._add_unload_script(script)
         self._add_release_script(script)
         
-    # def _prepare_next_level(self, cast, script):
+    def _prepare_next_level(self, cast, script):
     #     self._add_ball(cast)
     #     self._add_bricks(cast)
     #     self._add_racket(cast)
-    #     self._add_dialog(cast, PREP_TO_LAUNCH)
+        self._add_surface(cast)
+        #self._add_ball(cast)
+        self._add_paddle1(cast)
+        self._add_paddle2(cast)
+        self._add_puck(cast)
+        self._add_dialog(cast, PREP_TO_LAUNCH)
 
-    #     script.clear_actions(INPUT)
-    #     script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
-    #     self._add_output_script(script)
-    #     script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
+        self._add_output_script(script)
+        script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
         
     # def _prepare_try_again(self, cast, script):
     #     self._add_ball(cast)
@@ -140,14 +146,14 @@ class SceneManager:
     #     self._add_update_script(script)
     #     self._add_output_script(script)
 
-    # def _prepare_in_play(self, cast, script):
+    def _prepare_in_play(self, cast, script):
     #     self._activate_ball(cast)
-    #     cast.clear_actors(DIALOG_GROUP)
+        cast.clear_actors(DIALOG_GROUP)
 
-    #     script.clear_actions(INPUT)
-    #     script.add_action(INPUT, self.CONTROL_RACKET_ACTION)
-    #     self._add_update_script(script)
-    #     self._add_output_script(script)
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, self.CONTROL_PADDLE_ACTION)
+        self._add_update_script(script)
+        self._add_output_script(script)
 
     # def _prepare_game_over(self, cast, script):
     #     self._add_ball(cast)

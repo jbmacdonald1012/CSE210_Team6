@@ -21,6 +21,11 @@ SURFACE_IMAGE = "AirHockey/assets/images/surface.png"
 SURFACE_WIDTH = 1040
 SURFACE_HEIGHT = 669
 
+#SOUND
+BOUNCE_SOUND = "AirHockey/assets/sounds/boing.wav"
+WELCOME_SOUND = "AirHockey/assets/sounds/start.wav"
+OVER_SOUND = "AirHockey/assets/sounds/over.wav"
+
 # PUCK
 PUCK_GROUP = "pucks"
 PUCK_IMAGE = "AirHockey/assets/images/puck.png"
