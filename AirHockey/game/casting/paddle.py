@@ -1,6 +1,7 @@
 from constants import *
 from game.casting.actor import Actor
 from game.casting.point import Point
+import time
 
 class Paddle(Actor):
     """A implement used to hit and bounce the paddle in the game."""
@@ -76,6 +77,12 @@ class Paddle(Actor):
         """Stops the bat from moving."""
         velocity = Point(0, 0)
         self._body.set_velocity(velocity)
+    
+    def stop_moving_collision(self):
+        """Stops the paddle when collision."""
+        velocity = Point(0, 0)
+        self._body.set_velocity(velocity)
+        time.sleep(0.1)
     
     def get_image(self):
         """Gets the PADDLE's image.

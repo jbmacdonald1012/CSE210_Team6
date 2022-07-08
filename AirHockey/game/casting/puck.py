@@ -18,21 +18,29 @@ class Puck(Actor):
         self._body = body
         self._image = image
 
-    def bounce_x(self):
+    def bounce_x(self, velocity_object):
         """Bounces the puck in the x direction."""
         velocity = self._body.get_velocity()
         rn = random.uniform(0.9, 1.1)
-        vx = velocity.get_x() * rn * -1
+        vx = (velocity.get_x() * rn * -1) + velocity_object
         vy = velocity.get_y()
+        if vx > 18 :
+            vx = 18
+        if vy > 18 :
+            vy = 18    
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
 
-    def bounce_y(self):
+    def bounce_y(self, velocity_object):
         """Bounces the puck in the y direction."""
         velocity = self._body.get_velocity()
         rn = random.uniform(0.9, 1.1)
         vx = velocity.get_x()
-        vy = velocity.get_y() * rn * -1 
+        vy = (velocity.get_y() * rn * -1) + velocity_object 
+        if vx > 18 :
+            vx = 18
+        if vy > 18 :
+            vy = 18 
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
 
