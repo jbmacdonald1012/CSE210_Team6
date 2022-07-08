@@ -34,6 +34,7 @@ from game.scripting.initialize_devices_action import InitializeDevicesAction
 from game.scripting.load_assets_action import LoadAssetsAction
 # from game.scripting.move_ball_action import MoveBallAction
 # from game.scripting.move_racket_action import MoveRacketAction
+from game.scripting.move_paddle_action import MovePaddleAction
 # from game.scripting.play_sound_action import PlaySoundAction
 from game.scripting.release_devices_action import ReleaseDevicesAction
 from game.scripting.start_drawing_action import StartDrawingAction
@@ -72,6 +73,7 @@ class SceneManager:
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
     # MOVE_BALL_ACTION = MoveBallAction()
     # MOVE_RACKET_ACTION = MoveRacketAction()
+    MOVE_PADDLE_ACTION = MovePaddleAction()
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -339,10 +341,12 @@ class SceneManager:
         script.clear_actions(UNLOAD)
         script.add_action(UNLOAD, self.UNLOAD_ASSETS_ACTION)
         
-    # def _add_update_script(self, script):
-    #     script.clear_actions(UPDATE)
+    def _add_update_script(self, script):
+
+        script.clear_actions(UPDATE)
     #     script.add_action(UPDATE, self.MOVE_BALL_ACTION)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
+        script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_RACKET_ACTION)

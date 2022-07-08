@@ -70,6 +70,10 @@ RIGHT = "right"
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"
+W_KEY = "w"
+A_KEY = "a"
+S_KEY = "s"
+D_KEY = "d"
 
 # COLORS
 BLACK = Color(0, 0, 0)
