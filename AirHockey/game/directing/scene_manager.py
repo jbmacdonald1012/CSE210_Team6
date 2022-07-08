@@ -5,6 +5,7 @@ from game.casting.animation import Animation
 
 from game.casting.body import Body
 #from game.casting.brick import Brick
+from game.casting.surface import Surface
 from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.paddle import Paddle
@@ -26,6 +27,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.draw_paddle_action import DrawPaddleAction
 from game.scripting.draw_paddle2_action import DrawPaddle2Action
 from game.scripting.draw_puck_action import DrawPuckAction
+from game.scripting.draw_surface import DrawSurface
 # from game.scripting.draw_racket_action import DrawRacketAction
 from game.scripting.end_drawing_action import EndDrawingAction
 from game.scripting.initialize_devices_action import InitializeDevicesAction
@@ -63,6 +65,7 @@ class SceneManager:
     DRAW_PADDLE_ACTION = DrawPaddleAction(VIDEO_SERVICE)
     DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
     DRAW_PUCK_ACTION = DrawPuckAction(VIDEO_SERVICE)
+    DRAW_SURFACE = DrawSurface(VIDEO_SERVICE)
     # DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -97,6 +100,7 @@ class SceneManager:
         #self._add_level(cast)
         #self._add_lives(cast)
         #self._add_score(cast)
+        self._add_surface(cast)
         #self._add_ball(cast)
         self._add_paddle1(cast)
         self._add_paddle2(cast)
@@ -172,6 +176,21 @@ class SceneManager:
     #     image = Image(BALL_IMAGE)
     #     ball = Ball(body, image, True)
     #     cast.add_actor(BALL_GROUP, ball)
+
+    def _activate_surface(self, cast):
+        surface = cast.get_first_actor(SURFACE_GROUP)
+        surface.release()
+
+    def _add_surface(self, cast):
+        cast.clear_actors(SURFACE_GROUP)
+        x = 30
+        y = SCREEN_HEIGHT - 690
+        position = Point(x, y)
+        size = Point(SURFACE_WIDTH, SURFACE_HEIGHT)
+        body = Body(position, size)
+        image = Image(SURFACE_IMAGE)
+        surface = Surface(body, image, True)
+        cast.add_actor(SURFACE_GROUP, surface)
 
     def _add_puck(self, cast):
         cast.clear_actors(PUCK_GROUP)
@@ -301,6 +320,7 @@ class SceneManager:
     def _add_output_script(self, script):
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
+        script.add_action(OUTPUT, self.DRAW_SURFACE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE2_ACTION)
         script.add_action(OUTPUT, self.DRAW_PUCK_ACTION)
