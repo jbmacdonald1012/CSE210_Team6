@@ -7,7 +7,7 @@ GAME_NAME = "Air Hockey"
 FRAME_RATE = 60
 
 # SCREEN
-SCREEN_WIDTH = 1040
+SCREEN_WIDTH = 1035
 SCREEN_HEIGHT = 680
 CENTER_X = SCREEN_WIDTH / 2
 CENTER_Y = SCREEN_HEIGHT / 2
@@ -17,7 +17,7 @@ STATS_GROUP = "stats"
 
 # SURFACE
 SURFACE_GROUP = "surface"
-SURFACE_IMAGE = "air_hockey/assets/images/surface.png"
+SURFACE_IMAGE = "AirHockey/assets/images/surface.png"
 SURFACE_WIDTH = 1040
 SURFACE_HEIGHT = 669
 
@@ -39,7 +39,7 @@ PADDLE_RATE = 6
 PADDLE_VELOCITY = 8
 
 # FONT
-FONT_FILE = "air_hockey/assets/fonts/zorque.otf"
+FONT_FILE = "AirHockey/assets/fonts/zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 

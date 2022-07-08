@@ -65,7 +65,7 @@ class SceneManager:
     DRAW_PADDLE_ACTION = DrawPaddleAction(VIDEO_SERVICE)
     DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
     DRAW_PUCK_ACTION = DrawPuckAction(VIDEO_SERVICE)
-    DRAW_SURFACE = DrawSurface(VIDEO_SERVICE)
+    DRAW_SURFACE_ACTION = DrawSurface(VIDEO_SERVICE)
     # DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -183,8 +183,8 @@ class SceneManager:
 
     def _add_surface(self, cast):
         cast.clear_actors(SURFACE_GROUP)
-        x = 30
-        y = SCREEN_HEIGHT - 690
+        x = 0
+        y = 33
         position = Point(x, y)
         size = Point(SURFACE_WIDTH, SURFACE_HEIGHT)
         body = Body(position, size)
