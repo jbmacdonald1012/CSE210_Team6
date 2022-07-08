@@ -16,9 +16,9 @@ from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.check_over_action import CheckOverAction
-# from game.scripting.collide_borders_action import CollideBordersAction
+from game.scripting.collide_borders_action import CollideBordersAction
 # from game.scripting.collide_brick_action import CollideBrickAction
-# from game.scripting.collide_racket_action import CollideRacketAction
+from game.scripting.collide_paddle_action import CollidePaddleAction
 from game.scripting.control_paddle_action import ControlPaddleAction
 from game.scripting.control_paddle_action_two import ControlPaddleActionTwo
 # from game.scripting.draw_ball_action import DrawBallAction
@@ -37,6 +37,7 @@ from game.scripting.load_assets_action import LoadAssetsAction
 # from game.scripting.move_racket_action import MoveRacketAction
 from game.scripting.move_paddle_action import MovePaddleAction
 from game.scripting.move_paddle_action_two import MovePaddleActionTwo
+from game.scripting.move_puck_action import MovePuckAction
 from game.scripting.play_sound_action import PlaySoundAction
 from game.scripting.release_devices_action import ReleaseDevicesAction
 from game.scripting.start_drawing_action import StartDrawingAction
@@ -57,9 +58,9 @@ class SceneManager:
     VIDEO_SERVICE = RaylibVideoService(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT)
 
     # CHECK_OVER_ACTION = CheckOverAction()
-    # COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    # COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_PADDLE_ACTION = CollidePaddleAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
@@ -79,6 +80,7 @@ class SceneManager:
     # MOVE_RACKET_ACTION = MoveRacketAction()
     MOVE_PADDLE_ACTION = MovePaddleAction()
     MOVE_PADDLE_ACTION_TWO = MovePaddleActionTwo()
+    MOVE_PUCK_ACTION = MovePuckAction()
     RELEASE_DEVICES_ACTION = ReleaseDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     START_DRAWING_ACTION = StartDrawingAction(VIDEO_SERVICE)
     UNLOAD_ASSETS_ACTION = UnloadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -151,7 +153,7 @@ class SceneManager:
     #     self._add_output_script(script)
 
     def _prepare_in_play(self, cast, script):
-    #     self._activate_ball(cast)
+        self._activate_puck(cast)
         cast.clear_actors(DIALOG_GROUP)
 
         script.clear_actions(INPUT)
@@ -174,9 +176,9 @@ class SceneManager:
     # casting methods
     # ----------------------------------------------------------------------------------------------
     
-    # def _activate_ball(self, cast):
-    #     ball = cast.get_first_actor(BALL_GROUP)
-    #     ball.release()
+    def _activate_puck(self, cast):
+        puck = cast.get_first_actor(PUCK_GROUP)
+        puck.release()
 
     # def _add_ball(self, cast):
     #     cast.clear_actors(BALL_GROUP)
@@ -358,8 +360,9 @@ class SceneManager:
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION_TWO)
-    #     script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
+        script.add_action(UPDATE, self.MOVE_PUCK_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
     #     script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
-    #     script.add_action(UPDATE, self.COLLIDE_RACKET_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_PADDLE_ACTION)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
     #     script.add_action(UPDATE, self.CHECK_OVER_ACTION)
