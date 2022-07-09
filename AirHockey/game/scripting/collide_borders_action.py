@@ -17,7 +17,8 @@ class CollideBordersAction(Action):
         y = position.get_y()
         bounce_sound = Sound(SLIDE_HIT)
         over_sound = Sound(OVER_SOUND)
-                
+       
+      
         if x < FIELD_LEFT and y < 250 :
             puck.bounce_x(0)
             self._audio_service.play_sound(bounce_sound)
