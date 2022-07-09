@@ -30,12 +30,12 @@ class CollidePaddleAction(Action):
             puck.bounce_y(paddle_velocity_y)
             puck.bounce_x(paddle_velocity_x)
             paddle.stop_moving_collision()
-            sound = Sound(BOUNCE_SOUND)
+            sound = Sound(SLIDE_HIT)
             self._audio_service.play_sound(sound)  
 
         if self._physics_service.has_collided(puck_body, paddle_body_2):
             puck.bounce_y(paddle_velocity_2_y)
             puck.bounce_x(paddle_velocity_2_x)
             paddle_2.stop_moving_collision()
-            sound = Sound(BOUNCE_SOUND)
+            sound = Sound(SLIDE_HIT)
             self._audio_service.play_sound(sound)  

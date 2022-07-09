@@ -31,6 +31,8 @@ SURFACE_HEIGHT = 669
 BOUNCE_SOUND = "AirHockey/assets/sounds/boing.wav"
 WELCOME_SOUND = "AirHockey/assets/sounds/start.wav"
 OVER_SOUND = "AirHockey/assets/sounds/over.wav"
+GOAL = "AirHockey/assets/sounds/goal.wav"
+SLIDE_HIT = "AirHockey/assets/sounds/slide_hit.wav"
 
 # PUCK
 PUCK_GROUP = "pucks"
@@ -51,7 +53,7 @@ PADDLE_VELOCITY = 8
 
 # FONT
 FONT_FILE = "AirHockey/assets/fonts/zorque.otf"
-FONT_SMALL = 32
+FONT_SMALL = 30
 FONT_LARGE = 48
 
 # TEXT
@@ -100,3 +102,21 @@ DIALOG_GROUP = "dialogs"
 ENTER_TO_START = "PRESS ENTER TO START"
 PREP_TO_LAUNCH = "PREPARING TO LAUNCH"
 WAS_GOOD_GAME = "GAME OVER"
+
+#GOALS
+GOAL_GROUP = "goals"
+# LEFT
+# GOAL_A
+GOAL_TOP =  80
+GOAL_BOTTOM = SCREEN_HEIGHT-10
+GOAL_LEFT = 30
+# RIGHT
+# GOAL_B
+GOAL_RIGHT = SCREEN_WIDTH - 81
+
+# HUD
+HUD_MARGIN = 3
+SCORE_GROUP = "score"
+SCORE_FORMAT = "SCORE: {}"
+PLAYER_A= "Player 1: {}"
+PLAYER_B= "Player 2: {}"

@@ -29,6 +29,8 @@ from game.scripting.draw_paddle_action import DrawPaddleAction
 from game.scripting.draw_paddle2_action import DrawPaddle2Action
 from game.scripting.draw_puck_action import DrawPuckAction
 from game.scripting.draw_surface import DrawSurface
+from game.scripting.collide_goal_action import CollideGoalAction
+from game.scripting.draw_hud_action import DrawHudAction
 # from game.scripting.draw_racket_action import DrawRacketAction
 from game.scripting.end_drawing_action import EndDrawingAction
 from game.scripting.initialize_devices_action import InitializeDevicesAction
@@ -62,6 +64,7 @@ class SceneManager:
     # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PADDLE_ACTION = CollidePaddleAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
+    COLLIDE_GOAL_ACTION = CollideGoalAction(PHYSICS_SERVICE,AUDIO_SERVICE)
     CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
     # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
@@ -72,6 +75,7 @@ class SceneManager:
     DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
     DRAW_PUCK_ACTION = DrawPuckAction(VIDEO_SERVICE)
     DRAW_SURFACE_ACTION = DrawSurface(VIDEO_SERVICE)
+    DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
     # DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
@@ -108,7 +112,8 @@ class SceneManager:
         self._add_stats(cast)
         #self._add_level(cast)
         #self._add_lives(cast)
-        #self._add_score(cast)
+        self._add_score_a(cast)
+        self._add_score_b(cast)
         self._add_surface(cast)
         #self._add_ball(cast)
         self._add_paddle1(cast)
@@ -283,6 +288,21 @@ class SceneManager:
         label = Label(text, position)
         cast.add_actor(DIALOG_GROUP, label)
 
+    def _add_score_a(self, cast):
+        cast.clear_actors(SCORE_GROUP)
+        score_display = PLAYER_A.format(SCORE_FORMAT)
+        text = Text(score_display, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
+        position = Point(CENTER_X-300, HUD_MARGIN)
+        label = Label(text, position)
+        cast.add_actor(SCORE_GROUP, label)
+    
+    def _add_score_b(self, cast):
+        score_display = PLAYER_B.format(SCORE_FORMAT)
+        text = Text(score_display, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
+        position = Point(CENTER_X+300, HUD_MARGIN)
+        label = Label(text, position)
+        cast.add_actor(SCORE_GROUP, label)
+
     # def _add_level(self, cast):
     #     cast.clear_actors(LEVEL_GROUP)
     #     text = Text(LEVEL_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
@@ -335,6 +355,7 @@ class SceneManager:
     def _add_output_script(self, script):
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
+        script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         script.add_action(OUTPUT, self.DRAW_SURFACE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE2_ACTION)

@@ -15,7 +15,7 @@ class CollideBordersAction(Action):
         position = body.get_position()
         x = position.get_x()
         y = position.get_y()
-        bounce_sound = Sound(BOUNCE_SOUND)
+        bounce_sound = Sound(SLIDE_HIT)
         over_sound = Sound(OVER_SOUND)
                 
         if x < FIELD_LEFT and y < 250 :
