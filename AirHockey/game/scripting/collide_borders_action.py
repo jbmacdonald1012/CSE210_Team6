@@ -16,6 +16,7 @@ class CollideBordersAction(Action):
         x = position.get_x()
         y = position.get_y()
         bounce_sound = Sound(SLIDE_HIT)
+        goal_sound = Sound (GOAL)
         over_sound = Sound(OVER_SOUND)
        
       
@@ -28,6 +29,7 @@ class CollideBordersAction(Action):
         elif x < FIELD_LEFT and y > 250 and y < (250 + 220 - PUCK_WIDTH):
             stats = cast.get_first_actor(STATS_GROUP)
             stats.add_points_2()
+            self._audio_service.play_sound(goal_sound)
             callback.on_next(TRY_AGAIN)
         elif x >= (FIELD_RIGHT - PUCK_WIDTH) and y < 250 :
             puck.bounce_x(0)
@@ -38,6 +40,7 @@ class CollideBordersAction(Action):
         elif x >= (FIELD_RIGHT - PUCK_WIDTH) and y > 250 and y < (250 + 220 - PUCK_WIDTH):
             stats = cast.get_first_actor(STATS_GROUP)
             stats.add_points_1()
+            self._audio_service.play_sound(goal_sound)
             callback.on_next(TRY_AGAIN)
         if y < FIELD_TOP:
             puck.bounce_y(0)
