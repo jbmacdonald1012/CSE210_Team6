@@ -9,7 +9,7 @@ class Stats(Actor):
         super().__init__(debug)
         self._score_1 = 0
         self._score_2 = 0
-    def add_points_1(self, points):
+    def add_points_1(self):
         """Adds the given points to the score.
         
         Args:
@@ -17,7 +17,7 @@ class Stats(Actor):
         """
         self._score_1 += 1
 
-    def add_points_2(self, points):
+    def add_points_2(self):
         """Adds the given points to the score.
         
         Args:
