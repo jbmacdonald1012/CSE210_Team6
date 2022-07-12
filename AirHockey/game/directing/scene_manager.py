@@ -97,8 +97,8 @@ class SceneManager:
             self._prepare_new_game(cast, script)
         elif scene == NEXT_LEVEL:
             self._prepare_next_level(cast, script)
-        # elif scene == TRY_AGAIN:
-        #     self._prepare_try_again(cast, script)
+        elif scene == TRY_AGAIN:
+             self._prepare_try_again(cast, script)
         elif scene == IN_PLAY:
             self._prepare_in_play(cast, script)
         # elif scene == GAME_OVER:    
@@ -147,15 +147,18 @@ class SceneManager:
         self._add_output_script(script)
         script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
         
-    # def _prepare_try_again(self, cast, script):
+    def _prepare_try_again(self, cast, script):
     #     self._add_ball(cast)
     #     self._add_racket(cast)
-    #     self._add_dialog(cast, PREP_TO_LAUNCH)
+        self._add_paddle1(cast)
+        self._add_paddle2(cast)
+        self._add_puck(cast)
+        self._add_dialog(cast, PREP_TO_LAUNCH)
 
-    #     script.clear_actions(INPUT)
-    #     script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
-    #     self._add_update_script(script)
-    #     self._add_output_script(script)
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
+        self._add_update_script(script)
+        self._add_output_script(script)
 
     def _prepare_in_play(self, cast, script):
         self._activate_puck(cast)
@@ -197,9 +200,9 @@ class SceneManager:
     #     ball = Ball(body, image, True)
     #     cast.add_actor(BALL_GROUP, ball)
 
-    def _activate_surface(self, cast):
-        surface = cast.get_first_actor(SURFACE_GROUP)
-        surface.release()
+    # def _activate_surface(self, cast):
+    #     surface = cast.get_first_actor(SURFACE_GROUP)
+    #     surface.release()
 
     def _add_surface(self, cast):
         cast.clear_actors(SURFACE_GROUP)
@@ -289,19 +292,18 @@ class SceneManager:
         cast.add_actor(DIALOG_GROUP, label)
 
     def _add_score_a(self, cast):
-        cast.clear_actors(SCORE_GROUP)
-        score_display = PLAYER_A.format(SCORE_FORMAT)
-        text = Text(score_display, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
+        cast.clear_actors(SCORE_1_GROUP)
+        text = Text(PLAYER_A, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
         position = Point(CENTER_X-300, HUD_MARGIN)
         label = Label(text, position)
-        cast.add_actor(SCORE_GROUP, label)
+        cast.add_actor(SCORE_1_GROUP, label)
     
     def _add_score_b(self, cast):
-        score_display = PLAYER_B.format(SCORE_FORMAT)
-        text = Text(score_display, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
+        cast.clear_actors(SCORE_2_GROUP)
+        text = Text(PLAYER_B, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
         position = Point(CENTER_X+300, HUD_MARGIN)
         label = Label(text, position)
-        cast.add_actor(SCORE_GROUP, label)
+        cast.add_actor(SCORE_2_GROUP, label)
 
     # def _add_level(self, cast):
     #     cast.clear_actors(LEVEL_GROUP)
@@ -355,12 +357,11 @@ class SceneManager:
     def _add_output_script(self, script):
         script.clear_actions(OUTPUT)
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
-        script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         script.add_action(OUTPUT, self.DRAW_SURFACE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE_ACTION)
         script.add_action(OUTPUT, self.DRAW_PADDLE2_ACTION)
         script.add_action(OUTPUT, self.DRAW_PUCK_ACTION)
-        #script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
+        script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         #script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
         #script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         #script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)

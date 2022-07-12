@@ -7,23 +7,39 @@ class Stats(Actor):
     def __init__(self, debug = False):
         """Constructs a new Stats."""
         super().__init__(debug)
-        self._score = 0
-
-    def add_points(self, points):
+        self._score_1 = 0
+        self._score_2 = 0
+    def add_points_1(self, points):
         """Adds the given points to the score.
         
         Args:
             points: A number representing the points to add.
         """
-        self._score += points
+        self._score_1 += 1
 
-    def get_score(self):
+    def add_points_2(self, points):
+        """Adds the given points to the score.
+        
+        Args:
+            points: A number representing the points to add.
+        """
+        self._score_2 += 1
+
+    def get_score_1(self):
         """Gets the score.
 
         Returns:
             A number representing the score.
         """
-        return self._score
+        return self._score_1
+        
+    def get_score_2(self):
+        """Gets the score.
+
+        Returns:
+            A number representing the score.
+        """
+        return self._score_2
    
     def reset(self):
         """Resets the stats back to their default values."""

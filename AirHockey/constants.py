@@ -116,7 +116,8 @@ GOAL_RIGHT = SCREEN_WIDTH - 30
 
 # HUD
 HUD_MARGIN = 3
-SCORE_GROUP = "score"
+SCORE_1_GROUP = "score1"
+SCORE_2_GROUP = "score2"
 SCORE_FORMAT = "SCORE: {}"
 PLAYER_A= "Player 1: {}"
 PLAYER_B= "Player 2: {}"
