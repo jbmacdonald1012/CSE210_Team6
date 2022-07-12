@@ -30,7 +30,7 @@ class CollideGoalAction(Action):
                 stat_b.add_points(1)
                 callback.on_next(TRY_AGAIN)
                 self._audio_service.play_sound(goal)
-                if stat_b.get_score() == 9:
+                if stat_b.get_score() == 5:
                     callback.on_next(GAME_OVER)
                     callback.on_next(NEW_GAME)
 
@@ -39,7 +39,7 @@ class CollideGoalAction(Action):
                 stat_a.add_points(1)
                 callback.on_next(TRY_AGAIN)
                 self._audio_service.play_sound(goal)
-                if stat_a.get_score() == 9:
+                if stat_a.get_score() == 5:
                     callback.on_next(GAME_OVER)
                     callback.on_next(NEW_GAME)
 
