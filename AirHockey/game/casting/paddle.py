@@ -82,7 +82,7 @@ class Paddle(Actor):
         """Stops the paddle when collision."""
         velocity = Point(0, 0)
         self._body.set_velocity(velocity)
-        time.sleep(0.1)
+        time.sleep(0.15)
     
     def get_image(self):
         """Gets the PADDLE's image.
