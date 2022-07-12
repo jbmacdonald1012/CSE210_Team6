@@ -29,7 +29,7 @@ from game.scripting.draw_paddle_action import DrawPaddleAction
 from game.scripting.draw_paddle2_action import DrawPaddle2Action
 from game.scripting.draw_puck_action import DrawPuckAction
 from game.scripting.draw_surface import DrawSurface
-from game.scripting.collide_goal_action import CollideGoalAction
+#from game.scripting.collide_goal_action import CollideGoalAction
 from game.scripting.draw_hud_action import DrawHudAction
 # from game.scripting.draw_racket_action import DrawRacketAction
 from game.scripting.end_drawing_action import EndDrawingAction
@@ -64,7 +64,7 @@ class SceneManager:
     # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PADDLE_ACTION = CollidePaddleAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
-    COLLIDE_GOAL_ACTION = CollideGoalAction(PHYSICS_SERVICE,AUDIO_SERVICE)
+    #COLLIDE_GOAL_ACTION = CollideGoalAction(PHYSICS_SERVICE,AUDIO_SERVICE)
     CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
     # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
