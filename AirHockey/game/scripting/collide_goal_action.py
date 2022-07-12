@@ -43,7 +43,6 @@ class CollideGoalAction(Action):
                     callback.on_next(GAME_OVER)
                     callback.on_next(NEW_GAME)
 
-
         if self._physics_service.has_collided(ball_body, goal_a_body):
             #ball.bounce_y()
             # ADD GOAL SOUND
