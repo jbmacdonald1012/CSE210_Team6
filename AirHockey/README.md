@@ -58,6 +58,7 @@ Win Scene
 *Program outline"
 
 Assets Folder
+  Fonts
   Images 
   Sounds
 
@@ -70,8 +71,6 @@ Game Folder
   Scripting folder 
 
   Services folder 
-
-  shared folder 
 
 Constants.py
 Main.py
