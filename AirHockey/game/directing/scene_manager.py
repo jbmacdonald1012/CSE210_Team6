@@ -295,7 +295,7 @@ class SceneManager:
         position = Point(CENTER_X-300, HUD_MARGIN)
         label = Label(text, position)
         cast.add_actor(SCORE_1_GROUP, label)
-    
+      
     def _add_score_b(self, cast):
         cast.clear_actors(SCORE_2_GROUP)
         text = Text(PLAYER_B, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
