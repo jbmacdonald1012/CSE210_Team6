@@ -45,7 +45,7 @@ class CollideBordersAction(Action):
             stats.add_points_1()
             self._audio_service.play_sound(goal_sound)
             callback.on_next(TRY_AGAIN)        
-            if SCORE_1_GROUP == 5:
+            if SCORE_2_GROUP == 5:
                 callback.on_next(GAME_OVER)
                 callback.on_next(NEW_GAME)
         if y < FIELD_TOP:
