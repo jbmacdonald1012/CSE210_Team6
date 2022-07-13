@@ -99,8 +99,8 @@ class SceneManager:
              self._prepare_try_again(cast, script)
         elif scene == IN_PLAY:
             self._prepare_in_play(cast, script)
-        # elif scene == GAME_OVER:    
-        #     self._prepare_game_over(cast, script)
+        elif scene == GAME_OVER:    
+            self._prepare_game_over(cast, script)
     
     # ----------------------------------------------------------------------------------------------
     # scene methods
