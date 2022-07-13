@@ -15,7 +15,7 @@ from game.casting.puck import Puck
 from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
-# from game.scripting.check_over_action import CheckOverAction
+from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_borders_action import CollideBordersAction
 # from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_paddle_action import CollidePaddleAction
@@ -58,7 +58,7 @@ class SceneManager:
     PHYSICS_SERVICE = RaylibPhysicsService()
     VIDEO_SERVICE = RaylibVideoService(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT)
 
-    # CHECK_OVER_ACTION = CheckOverAction()
+    CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PADDLE_ACTION = CollidePaddleAction(PHYSICS_SERVICE, AUDIO_SERVICE)
@@ -168,15 +168,20 @@ class SceneManager:
         self._add_update_script(script)
         self._add_output_script(script)
 
-    # def _prepare_game_over(self, cast, script):
-    #     self._add_ball(cast)
-    #     self._add_racket(cast)
-    #     self._add_dialog(cast, WAS_GOOD_GAME)
+    def _prepare_game_over(self, cast, script):
+        self._add_paddle1(cast)
+        self._add_paddle2(cast)
+        self._add_puck(cast)
+        stats = cast.get_first_actor(STATS_GROUP)
+        if stats.get_score_1() == 5 :
+            self._add_dialog(cast, WINNER1)
+        else :
+            self._add_dialog(cast, WINNER2)
 
-    #     script.clear_actions(INPUT)
-    #     script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))
-    #     script.clear_actions(UPDATE)
-    #     self._add_output_script(script)
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))
+        script.clear_actions(UPDATE)
+        self._add_output_script(script)
 
     # ----------------------------------------------------------------------------------------------
     # casting methods
@@ -385,4 +390,4 @@ class SceneManager:
     #     script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_PADDLE_ACTION)
     #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
-    #     script.add_action(UPDATE, self.CHECK_OVER_ACTION)
+        script.add_action(UPDATE, self.CHECK_OVER_ACTION)
