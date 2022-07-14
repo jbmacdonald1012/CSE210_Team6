@@ -25,7 +25,6 @@ class RaylibVideoService(VideoService):
 
     def draw_image(self, image, position):
         filepath = image.get_filename()
-        # fixed os dependent filepath
         filepath = str(pathlib.Path(filepath))
         texture = self._textures[filepath]
         x = position.get_x()
@@ -50,14 +49,12 @@ class RaylibVideoService(VideoService):
 
     def draw_text(self, text, position):
         filepath = text.get_fontfile()
-        # fixed os dependent filepath
         filepath = str(pathlib.Path(filepath))
         value = text.get_value()
         size = text.get_size()
         spacing = 0
         alignment = text.get_alignment()
         tint = self._to_raylib_color(Color(255, 255, 0))
-
         font = self._fonts[filepath]
         text_image = pyray.image_text_ex(font, value, size, spacing, tint)
         
@@ -66,7 +63,6 @@ class RaylibVideoService(VideoService):
 
         if alignment == ALIGN_CENTER:
             x = (position.get_x() - text_image.width / 2) 
-            # y = (position.get_y() - text_image.height / 2)
         elif alignment == ALIGN_RIGHT:
             x = (position.get_x() - text_image.width) 
 
@@ -115,9 +111,11 @@ class RaylibVideoService(VideoService):
         for file in os.listdir(directory):
             filename = os.path.join(directory, file)
             extension = pathlib.Path(filename).suffix.lower()
+            
             if extension in filter:
                 filename = str(pathlib.Path(filename))
                 filepaths.append(filename)
+        
         return filepaths
 
     def _to_raylib_color(self, color):
