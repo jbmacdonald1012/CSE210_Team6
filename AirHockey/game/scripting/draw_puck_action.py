@@ -18,4 +18,3 @@ class DrawPuckAction(Action):
         image = puck.get_image()
         position = body.get_position()
         self._video_service.draw_image(image, position)
-        ####
