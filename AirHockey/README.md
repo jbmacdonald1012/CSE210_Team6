@@ -1,5 +1,6 @@
 # AIR HOCKEY
-Game Description
+Air Hockey is a game where to players hit a puck with paddles in an attempt to score goals. A goal is scored when the puck enters the opponents goal wall.
+The first player to score 5 goals wins.
 
 ---
 ## Getting Started
