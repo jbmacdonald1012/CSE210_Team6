@@ -1,41 +1,30 @@
 import csv
 from constants import *
 from game.casting.animation import Animation
-#from game.casting.ball import Ball
-
 from game.casting.body import Body
-#from game.casting.brick import Brick
 from game.casting.surface import Surface
 from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.paddle import Paddle
 from game.casting.point import Point
 from game.casting.puck import Puck
-# from game.casting.racket import Racket
 from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_borders_action import CollideBordersAction
-# from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_paddle_action import CollidePaddleAction
 from game.scripting.control_paddle_action import ControlPaddleAction
 from game.scripting.control_paddle_action_two import ControlPaddleActionTwo
-# from game.scripting.draw_ball_action import DrawBallAction
-# from game.scripting.draw_bricks_action import DrawBricksAction
 from game.scripting.draw_dialog_action import DrawDialogAction
-# from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_paddle_action import DrawPaddleAction
 from game.scripting.draw_paddle2_action import DrawPaddle2Action
 from game.scripting.draw_puck_action import DrawPuckAction
 from game.scripting.draw_surface import DrawSurface
 from game.scripting.draw_hud_action import DrawHudAction
-# from game.scripting.draw_racket_action import DrawRacketAction
 from game.scripting.end_drawing_action import EndDrawingAction
 from game.scripting.initialize_devices_action import InitializeDevicesAction
 from game.scripting.load_assets_action import LoadAssetsAction
-# from game.scripting.move_ball_action import MoveBallAction
-# from game.scripting.move_racket_action import MoveRacketAction
 from game.scripting.move_paddle_action import MovePaddleAction
 from game.scripting.move_paddle_action_two import MovePaddleActionTwo
 from game.scripting.move_puck_action import MovePuckAction
@@ -49,7 +38,6 @@ from game.services.raylib.raylib_keyboard_service import RaylibKeyboardService
 from game.services.raylib.raylib_physics_service import RaylibPhysicsService
 from game.services.raylib.raylib_video_service import RaylibVideoService
 
-
 class SceneManager:
     """The person in charge of setting up the cast and script for each scene."""
     
@@ -60,26 +48,18 @@ class SceneManager:
 
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_PADDLE_ACTION = CollidePaddleAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    # CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION = ControlPaddleAction(KEYBOARD_SERVICE)
     CONTROL_PADDLE_ACTION_TWO = ControlPaddleActionTwo(KEYBOARD_SERVICE)
-    # DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
-    # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
-    # DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
     DRAW_PADDLE_ACTION = DrawPaddleAction(VIDEO_SERVICE)
     DRAW_PADDLE2_ACTION = DrawPaddle2Action(VIDEO_SERVICE)
     DRAW_PUCK_ACTION = DrawPuckAction(VIDEO_SERVICE)
     DRAW_SURFACE_ACTION = DrawSurface(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
-    # DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
     END_DRAWING_ACTION = EndDrawingAction(VIDEO_SERVICE)
     INITIALIZE_DEVICES_ACTION = InitializeDevicesAction(AUDIO_SERVICE, VIDEO_SERVICE)
     LOAD_ASSETS_ACTION = LoadAssetsAction(AUDIO_SERVICE, VIDEO_SERVICE)
-    # MOVE_BALL_ACTION = MoveBallAction()
-    # MOVE_RACKET_ACTION = MoveRacketAction()
     MOVE_PADDLE_ACTION = MovePaddleAction()
     MOVE_PADDLE_ACTION_TWO = MovePaddleActionTwo()
     MOVE_PUCK_ACTION = MovePuckAction()
@@ -108,19 +88,13 @@ class SceneManager:
     
     def _prepare_new_game(self, cast, script):
         self._add_stats(cast)
-        #self._add_level(cast)
-        #self._add_lives(cast)
         self._add_score_a(cast)
         self._add_score_b(cast)
         self._add_surface(cast)
-        #self._add_ball(cast)
         self._add_paddle1(cast)
         self._add_paddle2(cast)
         self._add_puck(cast)
-        #self._add_bricks(cast)
-        #self._add_racket(cast)
         self._add_dialog(cast, ENTER_TO_START)
-
         self._add_initialize_script(script)
         self._add_load_script(script)
         script.clear_actions(INPUT)
@@ -130,29 +104,21 @@ class SceneManager:
         self._add_release_script(script)
         
     def _prepare_next_level(self, cast, script):
-    #     self._add_ball(cast)
-    #     self._add_bricks(cast)
-    #     self._add_racket(cast)
         self._add_surface(cast)
-        #self._add_ball(cast)
         self._add_paddle1(cast)
         self._add_paddle2(cast)
         self._add_puck(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
-
         script.clear_actions(INPUT)
         script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
         self._add_output_script(script)
         script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
         
     def _prepare_try_again(self, cast, script):
-    #     self._add_ball(cast)
-    #     self._add_racket(cast)
         self._add_paddle1(cast)
         self._add_paddle2(cast)
         self._add_puck(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
-
         script.clear_actions(INPUT)
         script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
         self._add_update_script(script)
@@ -161,7 +127,6 @@ class SceneManager:
     def _prepare_in_play(self, cast, script):
         self._activate_puck(cast)
         cast.clear_actors(DIALOG_GROUP)
-
         script.clear_actions(INPUT)
         script.add_action(INPUT, self.CONTROL_PADDLE_ACTION)
         script.add_action(INPUT, self.CONTROL_PADDLE_ACTION_TWO)
@@ -173,6 +138,7 @@ class SceneManager:
         self._add_paddle2(cast)
         self._add_puck(cast)
         stats = cast.get_first_actor(STATS_GROUP)
+
         if stats.get_score_1() == 5 :
             self._add_dialog(cast, WINNER1)
         else :
@@ -190,22 +156,6 @@ class SceneManager:
     def _activate_puck(self, cast):
         puck = cast.get_first_actor(PUCK_GROUP)
         puck.release()
-
-    # def _add_ball(self, cast):
-    #     cast.clear_actors(BALL_GROUP)
-    #     x = CENTER_X - BALL_WIDTH / 2
-    #     y = SCREEN_HEIGHT - RACKET_HEIGHT - BALL_HEIGHT  
-    #     position = Point(x, y)
-    #     size = Point(BALL_WIDTH, BALL_HEIGHT)
-    #     velocity = Point(0, 0)
-    #     body = Body(position, size, velocity)
-    #     image = Image(BALL_IMAGE)
-    #     ball = Ball(body, image, True)
-    #     cast.add_actor(BALL_GROUP, ball)
-
-    # def _activate_surface(self, cast):
-    #     surface = cast.get_first_actor(SURFACE_GROUP)
-    #     surface.release()
 
     def _add_surface(self, cast):
         cast.clear_actors(SURFACE_GROUP)
@@ -254,39 +204,6 @@ class SceneManager:
         paddle = Paddle(body, image, True)
         cast.add_actor(PADDLE_TWO_GROUP, paddle)
 
-    # def _add_bricks(self, cast):
-    #     cast.clear_actors(BRICK_GROUP)
-        
-    #     stats = cast.get_first_actor(STATS_GROUP)
-    #     level = stats.get_level() % BASE_LEVELS
-    #     filename = LEVEL_FILE.format(level)
-
-    #     with open(filename, 'r') as file:
-    #         reader = csv.reader(file, skipinitialspace=True)
-
-    #         for r, row in enumerate(reader):
-    #             for c, column in enumerate(row):
-
-    #                 x = FIELD_LEFT + c * BRICK_WIDTH
-    #                 y = FIELD_TOP + r * BRICK_HEIGHT
-    #                 color = column[0]
-    #                 frames = int(column[1])
-    #                 points = BRICK_POINTS 
-                    
-    #                 if frames == 1:
-    #                     points *= 2
-                    
-    #                 position = Point(x, y)
-    #                 size = Point(BRICK_WIDTH, BRICK_HEIGHT)
-    #                 velocity = Point(0, 0)
-    #                 images = BRICK_IMAGES[color][0:frames]
-
-    #                 body = Body(position, size, velocity)
-    #                 animation = Animation(images, BRICK_RATE, BRICK_DELAY)
-
-    #                 brick = Brick(body, animation, points)
-    #                 cast.add_actor(BRICK_GROUP, brick)
-
     def _add_dialog(self, cast, message):
         cast.clear_actors(DIALOG_GROUP)
         text = Text(message, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
@@ -308,47 +225,15 @@ class SceneManager:
         label = Label(text, position)
         cast.add_actor(SCORE_2_GROUP, label)
 
-    # def _add_level(self, cast):
-    #     cast.clear_actors(LEVEL_GROUP)
-    #     text = Text(LEVEL_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
-    #     position = Point(HUD_MARGIN, HUD_MARGIN)
-    #     label = Label(text, position)
-    #     cast.add_actor(LEVEL_GROUP, label)
-
-    # def _add_lives(self, cast):
-    #     cast.clear_actors(LIVES_GROUP)
-    #     text = Text(LIVES_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
-    #     position = Point(SCREEN_WIDTH - HUD_MARGIN, HUD_MARGIN)
-    #     label = Label(text, position)
-    #     cast.add_actor(LIVES_GROUP, label)
-
-    # def _add_score(self, cast):
-    #     cast.clear_actors(SCORE_GROUP)
-    #     text = Text(SCORE_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
-    #     position = Point(CENTER_X, HUD_MARGIN)
-    #     label = Label(text, position)
-    #     cast.add_actor(SCORE_GROUP, label)
-
     def _add_stats(self, cast):
          cast.clear_actors(STATS_GROUP)
          stats = Stats()
          cast.add_actor(STATS_GROUP, stats)
 
-    # def _add_racket(self, cast):
-    #     cast.clear_actors(RACKET_GROUP)
-    #     x = CENTER_X - RACKET_WIDTH / 2
-    #     y = SCREEN_HEIGHT - RACKET_HEIGHT
-    #     position = Point(x, y)
-    #     size = Point(RACKET_WIDTH, RACKET_HEIGHT)
-    #     velocity = Point(0, 0)
-    #     body = Body(position, size, velocity)
-    #     animation = Animation(RACKET_IMAGES, RACKET_RATE)
-    #     racket = Racket(body, animation)
-    #     cast.add_actor(RACKET_GROUP, racket)
-
     # ----------------------------------------------------------------------------------------------
     # scripting methods
     # ----------------------------------------------------------------------------------------------
+    
     def _add_initialize_script(self, script):
         script.clear_actions(INITIALIZE)
         script.add_action(INITIALIZE, self.INITIALIZE_DEVICES_ACTION)
@@ -365,9 +250,6 @@ class SceneManager:
         script.add_action(OUTPUT, self.DRAW_PADDLE2_ACTION)
         script.add_action(OUTPUT, self.DRAW_PUCK_ACTION)
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
-        #script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
-        #script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
-        #script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
         script.add_action(OUTPUT, self.END_DRAWING_ACTION)
 
@@ -382,12 +264,9 @@ class SceneManager:
     def _add_update_script(self, script):
 
         script.clear_actions(UPDATE)
-    #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION)
         script.add_action(UPDATE, self.MOVE_PADDLE_ACTION_TWO)
         script.add_action(UPDATE, self.MOVE_PUCK_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
-    #     script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_PADDLE_ACTION)
-    #     script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)
