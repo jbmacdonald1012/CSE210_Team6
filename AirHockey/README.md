@@ -14,9 +14,12 @@ You can also run the program from an IDE like Visual Studio Code. Start your IDE
 The project files and folders are organized as follows:
 ```
 root                    (project root folder)
-+--               (source code for game)
-  +--               (specific classes)
-  +-- __main__.py       (program entry point)
++--  AirHockey          (source code for game)
+  +-- assets              (images and other game assets)
+  +-- game                (specific classes)
++-- __main__.py         (program entry point)
++-- constants.py        (constants used throughout the game)
++-- CSE-210-AirHockey MockUp (mock up of the game design)
 +-- README.md           (general info)
 ```
 
