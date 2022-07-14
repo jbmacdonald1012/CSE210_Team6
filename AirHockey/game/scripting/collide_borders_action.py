@@ -31,9 +31,11 @@ class CollideBordersAction(Action):
             stats.add_points_2()
             self._audio_service.play_sound(goal_sound)
             callback.on_next(TRY_AGAIN)
+            
             if SCORE_1_GROUP == 5:
                 callback.on_next(GAME_OVER)
                 callback.on_next(NEW_GAME)
+        
         elif x >= (FIELD_RIGHT - PUCK_WIDTH) and y < 250 :
             puck.bounce_x(0)
             self._audio_service.play_sound(bounce_sound)
@@ -45,16 +47,13 @@ class CollideBordersAction(Action):
             stats.add_points_1()
             self._audio_service.play_sound(goal_sound)
             callback.on_next(TRY_AGAIN)        
-            #if SCORE_2_GROUP == 5:
-                #callback.on_next(GAME_OVER)
-                #callback.on_next(NEW_GAME)
+
         if y < FIELD_TOP:
             puck.bounce_y(0)
             self._audio_service.play_sound(bounce_sound)
         elif y >= (FIELD_BOTTOM - PUCK_HEIGHT):
             puck.bounce_y(0)
             self._audio_service.play_sound(bounce_sound)
-            #stats = cast.get_first_actor(STATS_GROUP)
-            #stats.lose_life()
+          
             
 
