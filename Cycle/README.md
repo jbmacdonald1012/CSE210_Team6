@@ -1,11 +1,11 @@
-# GAME TITLE
-Game Description
+# Cycle
+This is a two player game where both players ride a bicycle, and attempt to get the other player to cross over their trail. Once one of the cyclists crosses over the trail of the other, the game ends. 
 
 ---
 ## Getting Started
 Make sure you have Python 3.8.0 or newer installed and running on your machine. Open a terminal and browse to the project's root folder. Start the program by running the following command.
 ```
-python3 seeker 
+python3 __main__.py 
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE and open the project folder. Select the main module inside the hunter folder and click the "run" icon.
 
