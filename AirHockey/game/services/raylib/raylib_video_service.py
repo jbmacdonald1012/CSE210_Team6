@@ -54,7 +54,7 @@ class RaylibVideoService(VideoService):
         size = text.get_size()
         spacing = 0
         alignment = text.get_alignment()
-        tint = self._to_raylib_color(Color(255, 255, 0))
+        tint = self._to_raylib_color(Color(57,255,20))
         font = self._fonts[filepath]
         text_image = pyray.image_text_ex(font, value, size, spacing, tint)
         
